@@ -7,7 +7,7 @@ router.route("/")
 
 router
     .route("/:id")
-    .get(postsController.finById)
+    .get(postsController.findById)
     .put(postsController.update)
     .delete(postsController.remove);
 

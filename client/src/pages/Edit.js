@@ -1,0 +1,126 @@
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import axios from "axios";
+
+class Edit extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: "",
+            author: "",
+            body: ""
+        };
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+    }
+
+    // when loaded, get one item by id
+    componentDidMount() {
+        axios.get(`http://localhost:3000/api/posts/${this.props.match.params.id}`)
+            .then(post => { // singular item
+                this.setState({
+                    title: post.data.title,
+                    author: post.data.author,
+                    body: post.data.body
+                });
+            });
+    }
+
+    // when clicked, set the state with the new information from the event
+    onChange(event) {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    // when clicked, use id to search for this post and then update it with the incoming data
+    onSubmit(event) {
+        event.preventDefault();
+        const data = {
+            id: this.props.match.params.id,
+            title: this.state.title,
+            author: this.state.author,
+            body: this.state.body
+        };
+
+        axios.post("http://localhost:3000/api/posts/", data)
+            .then(post => {
+                alert("Post successfully updated.");
+                this.props.history.push(`/post/${this.props.match.params.id}`); // push to history to keep track of posts
+            })
+    }
+
+
+    render() {
+        return (
+            <div className="m-8">
+                <h1>Update an existing post</h1>
+                <form onSubmit={this.onSubmit}>
+                    <div className="m-8">
+                        <label
+                            htmlFor="title"
+                            className="block text-grey-darker text-sm font-bold mb-2"
+                        >
+                            Title
+                        </label>
+                        <input
+                            type="text"
+                            name="title"
+                            onChange={this.onChange}
+                            value={this.state.title}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                    </div>
+                    <div className="m-8">
+                        <label
+                            htmlFor="author"
+                            className="block text-grey-darker text-sm font-bold mb-2"
+                        >
+                            Author
+                        </label>
+                        <input
+                            type="text"
+                            name="author"
+                            value={this.onChange}
+                            onChange={this.state.author}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                    </div>
+                    <div className="m-8">
+                        <label
+                            htmlFor="body"
+                            className="block text-grey-darker text-sm font-bold mb-2"
+                        >
+                            Body
+                        </label>
+                        <textarea
+                            name="body"
+                            onChange={this.onChange}
+                            value={this.state.body}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                    </div>
+
+                    <div className="flex justify-center">
+                        <input
+                            type="submit"
+                            value="Save"
+                            className="bg-blue hover:bg-blue-dark text-white font-bold py2 px-4 rounded"
+                        />
+                        <Link
+                            className="big-red hover:bg-re-dark text-white font-bold py-2 px-4 rounded"
+                            to={`/post/${this.props.match.params.id}`}
+                        >
+                            Cancel
+                        </Link>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+    // end of class
+}
+
+
+export default withRouter(Edit);

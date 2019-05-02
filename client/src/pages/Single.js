@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import API from "../utils/API";
 
 // this component is to get ONE post by the id
 class Single extends Component {
@@ -14,13 +15,16 @@ class Single extends Component {
 
     // when loaded, get one item by id
     componentDidMount() {
-        axios.get(`http://localhost:3000/api/posts/${this.props.match.params.id}`)
-            .then(post => { // singular item
-                this.setState({
-                    post: post.data
-                });
-            });
+            this.getPost();
     }
+
+    getPost = () => {
+        API.getPost(this.props.match.params.id)
+            .then(res =>
+                this.setState({ post: res.data })
+            )
+            .catch(err => console.log(err));
+    };
 
     // delete one item by id and update the history?
     onDelete(event) {
@@ -31,6 +35,8 @@ class Single extends Component {
                 this.props.history.push("/");  // ***********************
             })
     }
+
+    // deletePost
 
     render() {
         return (

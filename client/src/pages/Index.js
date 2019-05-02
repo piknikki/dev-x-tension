@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import API from "../utils/API";
+// import axios from "axios";
 
 class Index extends Component {
     constructor(props) {
@@ -12,13 +13,16 @@ class Index extends Component {
 
     // get the posts and change the state to reflect the data
     componentDidMount() {
-        axios.get("http://localhost:3000/api/posts")
-            .then(posts => {
-                this.setState({
-                    posts: posts.data,
-                })
-            })
+        this.loadPosts();
     }
+
+    loadPosts = () => {
+        API.getPosts()
+            .then(res =>
+                this.setState({ posts: res.data, title: "", author: "", body: "" })
+            )
+            .catch(err => console.log(err));
+    };
 
     render() {
         return (
@@ -28,6 +32,8 @@ class Index extends Component {
                     {this.state.posts.map(post => (
                         <li key={post.title}>
                             <h2><Link to={`/post/${post._id}`}>{post.title}</Link></h2>
+                            <h3>{post.author}</h3>
+                            <p>{post.body}</p>
                         </li>
                     ))}
                 </ul>

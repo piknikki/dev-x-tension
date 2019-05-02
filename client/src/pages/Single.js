@@ -29,11 +29,13 @@ class Single extends Component {
     // delete one item by id and update the history?
     onDelete(event) {
         event.preventDefault();
-        axios.get(`http://localhost:3000/api/posts/${this.props.match.params.id}`)
+        API.deletePost(this.props.match.params.id)
             .then(post => {
+                this.getPost();
                 alert("Post successfully deleted.");
                 this.props.history.push("/");  // ***********************
             })
+            .catch(err => console.log(err));
     }
 
     // deletePost

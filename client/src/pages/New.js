@@ -26,18 +26,24 @@ class New extends Component {
     //
     onSubmit(event) {
         event.preventDefault();
-        const data = {
-            title: this.state.title,
-            author: this.state.author,
-            body: this.state.body
-        };
+        if (this.state.title && this.state.author) {
+            const data = {
+                title: this.state.title,
+                author: this.state.author,
+                body: this.state.body
+            };
 
-        axios.post("http://localhost:3000/api/posts/", data)
-            .then(post => {
-                alert("Post successfully created.");
-                document.getElementById("new").reset(); // reset the form
-                this.props.history.push("/"); // push to history to keep track of posts
-            })
+            axios.put(`http://localhost:3000/api/posts/${this.props.match.params.id}`, data)
+                .then(
+                    post => {
+                    alert("Post successfully created.");
+                    document.getElementById("new").reset(); // reset the form
+                    this.props.history.push("/"); // push to history to keep track of posts
+                }
+                )
+
+        }
+
     }
 
 

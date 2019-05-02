@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import API from "../utils/API";
 
 class Edit extends Component {
     constructor(props) {
@@ -26,6 +27,8 @@ class Edit extends Component {
             });
     }
 
+
+
     // when clicked, set the state with the new information from the event
     onChange(event) {
         const { name, value } = event.target;
@@ -34,22 +37,28 @@ class Edit extends Component {
         });
     }
 
+
     // when clicked, use id to search for this post and then update it with the incoming data
     onSubmit(event) {
         event.preventDefault();
-        const data = {
-            id: this.props.match.params.id,
+
+        const obj = {
+            id: this.state.id,
             title: this.state.title,
             author: this.state.author,
             body: this.state.body
-        };
+        }
 
-        axios.post("http://localhost:3000/api/posts/", data)
-            .then(post => {
-                alert("Post successfully updated.");
-                this.props.history.push(`/post/${this.props.match.params.id}`); // push to history to keep track of posts
-            })
-    }
+        axios.put(`http://localhost:3000/api/posts/${this.props.match.params.id}`, obj)
+            .then(res => console.log(res.data));
+
+        this.setState({
+            title: '',
+            author: '',
+            body: ''
+        })
+        }
+
 
 
     render() {
@@ -72,21 +81,9 @@ class Edit extends Component {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="m-8">
-                        <label
-                            htmlFor="author"
-                            className="block text-grey-darker text-sm font-bold mb-2"
-                        >
-                            Author
-                        </label>
-                        <input
-                            type="text"
-                            name="author"
-                            value={this.onChange}
-                            onChange={this.state.author}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
+
+
+
                     <div className="m-8">
                         <label
                             htmlFor="body"
@@ -124,3 +121,22 @@ class Edit extends Component {
 
 
 export default withRouter(Edit);
+
+
+
+
+// {/*<div className="m-8">*/}
+// {/*    <label*/}
+// {/*        htmlFor="author"*/}
+// {/*        className="block text-grey-darker text-sm font-bold mb-2"*/}
+// {/*    >*/}
+// {/*        Author*/}
+// {/*    </label>*/}
+// {/*    <input*/}
+// {/*        type="text"*/}
+// {/*        name="author"*/}
+// {/*        value={this.onChange}*/}
+// {/*        onChange={this.state.author}*/}
+// {/*        className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"*/}
+// {/*    />*/}
+// {/*</div>*/}

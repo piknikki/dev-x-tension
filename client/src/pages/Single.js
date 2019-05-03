@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import API from "../utils/API";
 
 // this component is to get ONE post by the id

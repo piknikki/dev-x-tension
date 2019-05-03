@@ -19,6 +19,12 @@ const PostSchema = new Schema({
     },
     body: {
         type: String
+    },
+    numLikes: {
+        type: Number
+    },
+    category: {
+        type: String
     }
 });
 

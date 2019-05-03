@@ -1,6 +1,7 @@
 import React, {  Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
+import "../css/styles.css";
 
 
 class New extends Component {
@@ -9,11 +10,14 @@ class New extends Component {
         this.state = {
             title: "",
             author: "",
-            body: ""
+            body: "",
+            numLikes: "",
+            category: ""
         };
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
+
 
     // when clicked, set the state with the new information from the event
     onChange(event) {
@@ -23,17 +27,26 @@ class New extends Component {
         });
     }
 
+    handleInputChange = event => {
+        this.setState({
+            category: event.target.value
+        })
+    }
+
     //
     onSubmit(event) {
         event.preventDefault();
-        if (this.state.title && this.state.author) {
+        if (this.state.title && this.state.author && this.state.category) {
             const data = {
                 title: this.state.title,
                 author: this.state.author,
-                body: this.state.body
-            };
+                body: this.state.body,
+                numLikes: this.state.numLikes,
+                category: this.state.category
+            }
 
-            axios.put(`http://localhost:3000/api/posts/${this.props.match.params.id}`, data)
+
+            axios.post(`http://localhost:3000/api/posts/`, data)
                 .then(
                     post => {
                     alert("Post successfully created.");
@@ -42,20 +55,42 @@ class New extends Component {
                 }
                 )
 
+        } else {
+            alert("category, author, and title are all required")
         }
 
     }
 
 
 
+
+
     render() {
         return (
             <div className="m-8">
-                <h1>Create a new post</h1>
+                <h1 className="text-blue-light">Create a new post</h1>
                 <form
                     onSubmit={this.onSubmit}
                     id="new"
                 >
+
+                    <div className="custom-select">
+                        <select
+                            id="categoryChoice"
+                            name="categoryChoice"
+                            onChange={this.handleInputChange}
+                            value={this.state.category}>
+                            <option value="0">Select category:</option>
+                            <option value="Teach">Teach</option>
+                            <option value="Question">Question</option>
+                            <option value="Rant">Rant</option>
+                            <option value="Success">Success</option>
+                            <option value="TipsTricks">Tips/Tricks</option>
+                            <option value="DadJokes">Dad Jokes</option>
+                        </select>
+                    </div>
+
+
                     <div className="m-8">
                         <label
                             htmlFor="title"
@@ -104,14 +139,10 @@ class New extends Component {
                         <input
                             type="submit"
                             value="Save"
+                            onSubmit={this.onSubmit}
                             className="bg-blue hover:bg-blue-dark text-white font-bold py2 px-4 rounded"
                         />
-                        <Link
-                            className="big-red hover:bg-re-dark text-white font-bold py-2 px-4 rounded"
-                            to="/"
-                        >
-                            Cancel
-                        </Link>
+
                     </div>
                 </form>
             </div>

@@ -19,24 +19,40 @@ class Index extends Component {
     loadPosts = () => {
         API.getPosts()
             .then(res =>
-                this.setState({ posts: res.data, title: "", author: "", body: "" })
+                this.setState({ posts: res.data, title: "", author: "", body: "", category: "", numLikes: "" })
             )
             .catch(err => console.log(err));
     };
 
     render() {
         return (
-            <div className="m-8">
-                <h2>This is the index page</h2>
-                <ul className="index">
-                    {this.state.posts.map(post => (
-                        <li key={post.title}>
-                            <h2><Link to={`/post/${post._id}`}>{post.title}</Link></h2>
-                            <h3>{post.author}</h3>
-                            <p>{post.body}</p>
-                        </li>
-                    ))}
-                </ul>
+            <div className="container">
+                <div className="list-reset ">
+                    <ul className="px-16 py-10 text-green-light hover:text-blue-light list-reset">
+                        {this.state.posts.map(post => (
+                            <li key={post.title} className="px-4 py-4">
+                                <h2><Link to={`/post/${post._id}`} className="no-underline">{post.title}</Link></h2>
+                                <h3 className="py2">{post.author}</h3>
+                                <p className="text-black py-2">{post.body}</p>
+
+                                <p>Category: {post.category}</p>
+                                <p>Number of likes: {post.numLikes}</p>
+                                <p>
+                                    <button
+                                        type="button"
+                                        className="btn"
+                                        data-action="like"
+                                        data-id={post._id}
+                                        onClick={this.handleButtonClick}>
+                                        Like
+                                    </button>
+                                </p>
+
+
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
 
         )

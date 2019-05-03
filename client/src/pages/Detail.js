@@ -1,58 +1,53 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+// import axios from "axios";
 
 class Detail extends Component {
-  state = {
-    book: {}
-  };
-  // Add code to get the book with an _id equal to the id in the route param
-  // e.g. http://localhost:3000/books/:id
-  // The book id for this route can be accessed using this.props.match.params.id
+    constructor(props) {
+        super(props)
+        this.state = {
+            posts: [],
+        }
+    }
 
-    // this.state.book
-
+    // get the posts and change the state to reflect the data
     componentDidMount() {
-        const id = this.props.match.params.id;
+        this.loadCategoryPosts();
+    }
 
-        API.getBook(id)
-            .then(res => this.setState({ book: res.data }))
+    loadCategoryPosts = () => {
+        API.getPosts(this.state.posts.category)
+            .then(res =>
+                this.setState({ posts: res.data, title: "", author: "", body: "" })
+            )
             .catch(err => console.log(err));
+    };
+
+
+    render() {
+        return (
+            <div className="container">
+                <h1>{this.state.posts.category}</h1>
+                <div className="list-reset ">
+                    <ul className="px-16 py-10 text-green-light hover:text-blue-light list-reset">
+                        {this.state.posts.map(post => (
+                            <li key={post.title} className="px-4 py-4">
+                                <h2><Link to={`/post/${post._id}`} className="no-underline">{post.title}</Link></h2>
+                                <h3 className="py2">{post.author}</h3>
+                                <p className="text-black py-2">{post.body}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+
+        )
     }
 
 
 
-
-  render() {
-    return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron>
-              <h1>
-                {this.state.book.title} by {this.state.book.author}
-              </h1>
-            </Jumbotron>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              <h1>Synopsis</h1>
-              <p>{this.state.book.synopsis}</p>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+//    end of the class
 }
 
 export default Detail;

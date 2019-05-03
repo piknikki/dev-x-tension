@@ -4,40 +4,76 @@ import "../css/styles.css";
 
 function Header() {
     return (
-        <header className="bg-white py-2">
-            <div className="container md:flex md:items-center md:justify-between mx-auto px-4">
-                <ul className="md:flex md:items-center list-reset text-2xl ">
-                    <li className="md:ml-4 list-reset">
-                        <NavLink
-                            className="no-underline text-green-light hover:text-blue-light"
-                            activeClassName="active"
-                            isActive={ () => window.location.pathname === "#" }
-                            to="#">
-                            Learn
-                        </NavLink>
-                    </li>
+        <header className="bg-white float-none justify-center py-2">
+            {/*<div className="container md:flex md:items-center md:justify-between mx-auto px-4">*/}
+                <div className="flex">
+                    <div className="w-1/5 transparent"> </div>
+                    <div className="w-3/5 px-2">
+                        <ul className="py-6 md:flex justify-center justify-between list-reset text-2xl ">
+                            <li className="md:ml-4 list-reset">
+                                <NavLink
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    activeClassName="active"
+                                    isActive={ () => window.location.pathname === "/category" }
+                                    to="/category">
+                                    Learn
+                                </NavLink>
+                            </li>
 
-                    <li className="md:ml-4">
-                        <NavLink
-                            className="no-underline text-green-light hover:text-blue-light"
-                            activeClassName="active"
-                            isActive={ () => window.location.pathname === "#" }
-                            to="#">
-                            Teach
-                        </NavLink>
-                    </li>
+                            <li className="md:ml-4">
+                                <NavLink
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    activeClassName="active"
+                                    isActive={ () => window.location.pathname === "#" }
+                                    to="#">
+                                    Teach
+                                </NavLink>
+                            </li>
 
-                    <li className="md:ml-4">
-                        <NavLink
-                            className="no-underline text-green-light hover:text-blue-light"
-                            activeClassName="active"
-                            isActive={ () => window.location.pathname === "#" }
-                            to="#">
-                            Rant
-                        </NavLink>
-                    </li>
+                            <li className="md:ml-4">
+                                <NavLink
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    activeClassName="active"
+                                    isActive={ () => window.location.pathname === "#" }
+                                    to="#">
+                                    Rant
+                                </NavLink>
+                            </li>
 
-                </ul>
+                            <li className="md:ml-4">
+                                <NavLink
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    activeClassName="active"
+                                    isActive={ () => window.location.pathname === "#" }
+                                    to="#">
+                                    Successes
+                                </NavLink>
+                            </li>
+
+                            <li className="md:ml-4">
+                                <NavLink
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    activeClassName="active"
+                                    isActive={ () => window.location.pathname === "#" }
+                                    to="#">
+                                    Tips/Tricks
+                                </NavLink>
+                            </li>
+
+                            <li className="md:ml-4">
+                                <NavLink
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    activeClassName="active"
+                                    isActive={ () => window.location.pathname === "#" }
+                                    to="#">
+                                    Dad Jokes
+                                </NavLink>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div className="w-1/5 transparent"> </div>
+                {/*</div>*/}
             </div>
         </header>
     );

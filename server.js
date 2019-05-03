@@ -24,6 +24,16 @@ app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/blogdb", { useNewUrlParser: true });
 
+// Enable CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build.index.html"));
 })

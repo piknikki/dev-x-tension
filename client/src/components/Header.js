@@ -2,35 +2,45 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/styles.css";
 
-const Header = () => {
+function Header() {
     return (
-        <header className="bg-blue-darker py-6 shadow-lg">
+        <header className="bg-white py-2">
             <div className="container md:flex md:items-center md:justify-between mx-auto px-4">
-                <img id="app-logo" className="A" src={process.env.PUBLIC_URL + '/images/dxt.png'} alt="dxt logo" />
-                <h1 id="logoname" className="text-2xl">dev X-Tension</h1>
-                <ul className="navbar-nav">
-                    <li className="nav-link">
+                <ul className="md:flex md:items-center list-reset text-2xl ">
+                    <li className="md:ml-4 list-reset">
                         <NavLink
-                            className="nav-link"
+                            className="no-underline text-green-light hover:text-blue-light"
                             activeClassName="active"
-                            isActive={ () => window.location.pathname === "/" }
-                            to="/">
-                            Home
+                            isActive={ () => window.location.pathname === "#" }
+                            to="#">
+                            Learn
                         </NavLink>
                     </li>
-                    <li className="nav-link">
+
+                    <li className="md:ml-4">
                         <NavLink
-                            className="nav-link"
+                            className="no-underline text-green-light hover:text-blue-light"
                             activeClassName="active"
-                            isActive={ () => window.location.pathname === "/new" }
-                            to="/new">
-                            New Post
+                            isActive={ () => window.location.pathname === "#" }
+                            to="#">
+                            Teach
                         </NavLink>
                     </li>
+
+                    <li className="md:ml-4">
+                        <NavLink
+                            className="no-underline text-green-light hover:text-blue-light"
+                            activeClassName="active"
+                            isActive={ () => window.location.pathname === "#" }
+                            to="#">
+                            Rant
+                        </NavLink>
+                    </li>
+
                 </ul>
             </div>
         </header>
-    )
+    );
 }
 
 export default Header;

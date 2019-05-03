@@ -1,3 +1,13 @@
-.logoname {
+body {
+    font-family: 'Quicksand', serif;
+}
+
+#logoname {
+    /*font-family: 'Quicksand', serif;*/
     font-family: 'Alegreya', serif;
+
+}
+
+.app-logo {
+
 }

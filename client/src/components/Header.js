@@ -24,8 +24,8 @@ function Header() {
                                 <NavLink
                                     className="no-underline text-green-light hover:text-blue-light"
                                     activeClassName="active"
-                                    isActive={ () => window.location.pathname === "#" }
-                                    to="#">
+                                    isActive={ () => window.location.pathname === "/category" }
+                                    to="/category">
                                     Teach
                                 </NavLink>
                             </li>
@@ -34,8 +34,8 @@ function Header() {
                                 <NavLink
                                     className="no-underline text-green-light hover:text-blue-light"
                                     activeClassName="active"
-                                    isActive={ () => window.location.pathname === "#" }
-                                    to="#">
+                                    isActive={ () => window.location.pathname === "/category" }
+                                    to="/category">
                                     Rant
                                 </NavLink>
                             </li>
@@ -44,8 +44,8 @@ function Header() {
                                 <NavLink
                                     className="no-underline text-green-light hover:text-blue-light"
                                     activeClassName="active"
-                                    isActive={ () => window.location.pathname === "#" }
-                                    to="#">
+                                    isActive={ () => window.location.pathname === "/category" }
+                                    to="/category">
                                     Successes
                                 </NavLink>
                             </li>
@@ -54,8 +54,8 @@ function Header() {
                                 <NavLink
                                     className="no-underline text-green-light hover:text-blue-light"
                                     activeClassName="active"
-                                    isActive={ () => window.location.pathname === "#" }
-                                    to="#">
+                                    isActive={ () => window.location.pathname === "/category" }
+                                    to="/category">
                                     Tips/Tricks
                                 </NavLink>
                             </li>
@@ -64,8 +64,8 @@ function Header() {
                                 <NavLink
                                     className="no-underline text-green-light hover:text-blue-light"
                                     activeClassName="active"
-                                    isActive={ () => window.location.pathname === "#" }
-                                    to="#">
+                                    isActive={ () => window.location.pathname === "/category" }
+                                    to="/category">
                                     Dad Jokes
                                 </NavLink>
                             </li>

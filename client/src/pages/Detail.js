@@ -16,8 +16,8 @@ class Detail extends Component {
         this.loadCategoryPosts();
     }
 
-    loadCategoryPosts = () => {
-        API.getPosts(this.state.posts.category)
+    loadCategoryPosts = (props) => {
+        API.getPosts(this.props.category)
             .then(res =>
                 this.setState({ posts: res.data, title: "", author: "", body: "" })
             )

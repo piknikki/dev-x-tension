@@ -140,7 +140,7 @@ class New extends Component {
                             type="submit"
                             value="Save"
                             onSubmit={this.onSubmit}
-                            className="bg-blue hover:bg-blue-dark text-white font-bold py2 px-4 rounded"
+                            className="bg-blue-light h-12 text-lg hover:bg-blue-dark text-white font-bold py4 px-6 border-b-4 border-blue-dark hover:border-blue rounded"
                         />
 
                     </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 // import API from "../utils/API";
 
@@ -64,7 +64,7 @@ class Edit extends Component {
     render() {
         return (
             <div className="m-8">
-                <h1>Update an existing post</h1>
+                <h1 className="text-blue-light">Update an existing post</h1>
                 <form onSubmit={this.onSubmit}>
                     <div className="m-8">
                         <label
@@ -100,17 +100,13 @@ class Edit extends Component {
                     </div>
 
                     <div className="flex justify-center">
-                        <input
-                            type="submit"
-                            value="Save"
-                            className="bg-blue hover:bg-blue-dark text-white font-bold py2 px-4 rounded"
-                        />
-                        <Link
-                            className="big-red hover:bg-re-dark text-white font-bold py-2 px-4 rounded"
-                            to={`/post/${this.props.match.params.id}`}
-                        >
-                            Cancel
-                        </Link>
+                            <input
+                                type="submit"
+                                value="Save"
+                                onSubmit={this.onSubmit}
+                                className="bg-blue-light h-12 text-lg hover:bg-blue-dark text-white font-bold py4 px-6 border-b-4 border-blue-dark hover:border-blue rounded"
+                            />
+
                     </div>
                 </form>
             </div>

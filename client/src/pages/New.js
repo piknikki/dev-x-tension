@@ -67,7 +67,7 @@ class New extends Component {
 
     render() {
         return (
-            <div className="m-8">
+            <div className="m-8 px-16 py-6">
                 <h1 className="text-blue-light">Create a new post</h1>
                 <form
                     onSubmit={this.onSubmit}

@@ -16,7 +16,8 @@ function Header() {
                                     activeClassName="active"
                                     isActive={ () => window.location.pathname === "/category" }
                                     to="/category">
-                                    Learn
+                                    {/*to={`/category/${this.state.category}`}>*/}
+                                    <h3>Learn</h3>
                                 </NavLink>
                             </li>
 
@@ -26,7 +27,7 @@ function Header() {
                                     activeClassName="active"
                                     isActive={ () => window.location.pathname === "/category" }
                                     to="/category">
-                                    Teach
+                                    <h3>Teach</h3>
                                 </NavLink>
                             </li>
 
@@ -36,7 +37,7 @@ function Header() {
                                     activeClassName="active"
                                     isActive={ () => window.location.pathname === "/category" }
                                     to="/category">
-                                    Rant
+                                    <h3>Rant</h3>
                                 </NavLink>
                             </li>
 
@@ -46,7 +47,7 @@ function Header() {
                                     activeClassName="active"
                                     isActive={ () => window.location.pathname === "/category" }
                                     to="/category">
-                                    Successes
+                                    <h3>Successes</h3>
                                 </NavLink>
                             </li>
 
@@ -56,7 +57,7 @@ function Header() {
                                     activeClassName="active"
                                     isActive={ () => window.location.pathname === "/category" }
                                     to="/category">
-                                    Tips/Tricks
+                                    <h3>Tips/Tricks</h3>
                                 </NavLink>
                             </li>
 
@@ -66,7 +67,7 @@ function Header() {
                                     activeClassName="active"
                                     isActive={ () => window.location.pathname === "/category" }
                                     to="/category">
-                                    Dad Jokes
+                                    <h3>Dad Jokes</h3>
                                 </NavLink>
                             </li>
 

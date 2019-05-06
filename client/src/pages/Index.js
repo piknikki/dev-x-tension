@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
-// import axios from "axios";
+import axios from "axios";
 
 
 class Index extends Component {
@@ -20,7 +20,7 @@ class Index extends Component {
     loadPosts = () => {
         API.getPosts()
             .then(res =>
-                this.setState({ posts: res.data, title: "", author: "", body: "", category: "", numLikes: "" })
+                this.setState({ posts: res.data, title: "", author: "", body: "", category: "", numLikes: 0 })
             )
             .catch(err => console.log(err));
     };
@@ -43,6 +43,22 @@ class Index extends Component {
 
     }
 
+    handleButtonClick = (event) => {
+        event.preventDefault();
+
+        const id = event.target.getAttribute("data-id");
+        const newState = { ...this.state };
+
+        for (let i = 0; i < this.state.posts.length; i++) {
+            if (this.state.posts[i]._id === id) {
+                // console.log(`Clicked ${id} on ${this.state.posts[i].title}.`);
+                newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
+                // console.log(newState.posts[i]);
+        axios.put(`/api/posts/${id}`, {numLikes: newState.posts[i].numLikes})
+        .then(res => this.loadPosts())
+        .catch(err => console.log(err));
+            }}
+        };
 
     render() {
         return (
@@ -58,19 +74,20 @@ class Index extends Component {
 
                                 <p className="text-grey-dark py-2">Category: {post.category}</p>
                                 <p>Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
-
+                                <p>
                                 <button
                                     type="button"
                                     className="btn"
                                     data-action="like"
                                     data-id={post._id}
                                     onClick={this.handleButtonClick}>
+                                    Like
                                     {/*<i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>*/}
                                     {/*<i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>*/}
                                     {/*<i className="fas fa-bacon text-blue-light text-xl px-2"></i>*/}
                                     {/*<i className="fas fa-ice-cream text-green-light text-xl px-2"></i>*/}
                                 </button>
-
+                                </p>
 
 
                             </li>

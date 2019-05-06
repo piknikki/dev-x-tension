@@ -46,7 +46,7 @@ class New extends Component {
             }
 
 
-            axios.post(`http://localhost:3000/api/posts/`, data)
+            axios.post(`/api/posts/`, data)
                 .then(
                     post => {
                     alert("Post successfully created.");

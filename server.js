@@ -16,13 +16,12 @@ app.use(morgan('dev'));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// app.use(express.static("public"));
+
+
 //Routes
-//require("./routes/api-routes.js")(app);
-//require(".routes/html-routes.js")(app);
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/blogdb", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/blogdb", { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
 
 // Enable CORS
 app.use((req, res, next) => {

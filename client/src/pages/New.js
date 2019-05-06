@@ -74,7 +74,7 @@ class New extends Component {
                     id="new"
                 >
 
-                    <div className="custom-select">
+                    <div className="custom-select py-2">
                         <select
                             id="categoryChoice"
                             name="categoryChoice"

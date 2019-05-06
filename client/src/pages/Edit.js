@@ -66,7 +66,7 @@ class Edit extends Component {
             <div className="m-8">
                 <h1 className="text-blue-light">Update an existing post</h1>
                 <form onSubmit={this.onSubmit}>
-                    <div className="m-8">
+                    <div className="m-8 ">
                         <label
                             htmlFor="title"
                             className="block text-grey-darker text-sm font-bold mb-2"
@@ -84,10 +84,10 @@ class Edit extends Component {
 
 
 
-                    <div className="m-8">
+                    <div className="m-8 ">
                         <label
                             htmlFor="body"
-                            className="block text-grey-darker text-sm font-bold mb-2"
+                            className="block text-grey-darker text-sm font-bold mb-2 py-4"
                         >
                             Body
                         </label>

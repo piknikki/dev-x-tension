@@ -13,7 +13,7 @@ router
 
 router
     .route("/:category")
-    .get(postsController.findById)
+    .get(postsController.findAll)
     .post(postsController.create);
 
 

@@ -11,3 +11,9 @@ body {
 .app-logo {
 
 }
+
+.yourElement {
+    animation-duration: 8s;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+}

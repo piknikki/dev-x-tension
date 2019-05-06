@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
 import axios from "axios";
+import "../css/styles.css"
 
 
 class Index extends Component {
@@ -68,16 +69,16 @@ class Index extends Component {
                         {this.state.posts.map(post => (
 
                             <li key={post.title} className="px-4 py-4">
-                                <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light ">{post.title}</Link></h1>
+                                <h1><Link to={`/post/${post._id}`} className="yourElement animated rubberBand no-underline text-blue-light hover:text-green-light ">{post.title}</Link></h1>
                                 <h3 className="py-2 leading-relaxed">written by:  {post.author}</h3>
                                 <p className="text-black py-2 leading-loose">{post.body}</p>
 
                                 <p className="text-grey-dark py-2">Category: {post.category}</p>
                                 <p>Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
-                                <p>
+
                                 <button
                                     type="button"
-                                    className="btn"
+                                    className="bg-transparent text-blue-light"
                                     data-action="like"
                                     data-id={post._id}
                                     onClick={this.handleButtonClick}>
@@ -87,7 +88,7 @@ class Index extends Component {
                                     {/*<i className="fas fa-bacon text-blue-light text-xl px-2"></i>*/}
                                     {/*<i className="fas fa-ice-cream text-green-light text-xl px-2"></i>*/}
                                 </button>
-                                </p>
+
 
 
                             </li>

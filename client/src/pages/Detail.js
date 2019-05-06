@@ -3,6 +3,7 @@ import {Link, withRouter} from "react-router-dom";
 import API from "../utils/API";
 
 class Detail extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
@@ -10,15 +11,14 @@ class Detail extends Component {
         }
     }
 
-    // get the posts and change the state to reflect the data
     componentDidMount() {
-        this.loadCategoryPosts();
+        this.loacCategoryPosts();
     }
 
     loadCategoryPosts = (props) => {
-        API.getPosts(this.props.match.params.category)
+        API.getPosts(props.category)
             .then(res =>
-                this.setState({ posts: res.data, title: "", author: "", body: "", category: "", numLikes: ""})
+                this.setState({ posts: res.data, title: "", author: "", body: "", category: "", numLikes: "" })
             )
             .catch(err => console.log(err));
     };

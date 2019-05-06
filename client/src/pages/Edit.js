@@ -17,7 +17,7 @@ class Edit extends Component {
 
     // when loaded, get one item by id
     componentDidMount() {
-        axios.get(`http://localhost:3000/api/posts/${this.props.match.params.id}`)
+        axios.get(`/api/posts/${this.props.match.params.id}`)
             .then(post => { // singular item
                 this.setState({
                     title: post.data.title,
@@ -49,7 +49,7 @@ class Edit extends Component {
             body: this.state.body
         }
 
-        axios.put(`http://localhost:3000/api/posts/${this.props.match.params.id}`, obj)
+        axios.put(`/api/posts/${this.props.match.params.id}`, obj)
             .then(res => console.log(res.data));
 
         this.setState({

@@ -1,7 +1,7 @@
 import React, {  Component } from "react";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
 import "../css/styles.css";
+import API from "../utils/API";
 
 
 class New extends Component {
@@ -46,7 +46,7 @@ class New extends Component {
             }
 
 
-            axios.post(`/api/posts/`, data)
+            API.savePost(data)
                 .then(
                     post => {
                     alert("Post successfully created.");
@@ -74,7 +74,7 @@ class New extends Component {
                     id="new"
                 >
 
-                    <div className="custom-select">
+                    <div className="custom-select py-2">
                         <select
                             id="categoryChoice"
                             name="categoryChoice"

@@ -13,8 +13,9 @@ router
 
 router
     .route("/:category")
-    .get(postsController.findById)
+    // .get(postsController.findById)
     // .get(postsController.findByCategory)
+    .get(postsController.findAll)
     .post(postsController.create);
 
 

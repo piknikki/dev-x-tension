@@ -8,13 +8,6 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => console.log(err));
     },
-    // findByCategory: function (req, res) {
-    //     db.Post
-    //         .find({ category: req.params.category }, req.body, { new: true })
-    //         .sort({ date: -1 })
-    //         .then(dbModel => res.json(dbModel))
-    //         .catch(err => console.log(err));
-    // },
     findById: function (req, res) {
         db.Post
             .findById(req.params.id)

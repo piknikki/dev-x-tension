@@ -1,145 +1,142 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { withRouter } from "react-router-dom";
 import "../css/styles.css";
-import API from "../utils/API";
-import axios from "axios";
+// import API from "../utils/API";
 
 
-class Header extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            posts: [],
-        }
-    }
+function Header(props) {
 
-    // get the posts and change the state to reflect the data
-    componentDidMount() {
-        this.loadPosts();
-    }
+        return (
+            <header className="bg-white float-none justify-center py-2">
+                <div className="flex">
+                    <div className="w-1/5 transparent"> </div>
+                    <div className="w-3/5 px-2">
+                        <ul className="py-6 md:flex justify-center justify-between list-reset text-2xl ">
 
-    loadPosts = () => {
-        API.getPosts()
-            .then(res =>
-                this.setState({ posts: res.data/*, title: "", author: "", body: "", category: "", numLikes: 0 */})
-            )
-            .catch(err => console.log(err));
-    };
-
-    handleButtonClick = (event) => {
-        event.preventDefault();
-
-        var category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
-        category = category.toLowerCase();
-        // const newState = { ...this.state };
-        // axios.get(`/api/posts/${category}`)
-        // API.getCategory(category)
-        // .then(res => console.log(res.data));
-        console.log(category);
-        var filteredArray = [];
-        for (let i = 0; i < this.state.posts.length; i++) {
-            if (this.state.posts[i].category === category) {
-                filteredArray.push(this.state.posts[i]);
-            }
-    }
-    console.log(filteredArray);
-}
-
-render() {
-    return (
-        <header className="bg-white float-none justify-center py-2">
-            {/*<div className="container md:flex md:items-center md:justify-between mx-auto px-4">*/}
-            <div className="flex">
-                <div className="w-1/5 transparent"> </div>
-                <div className="w-3/5 px-2">
-                    <ul className="py-6 md:flex justify-center justify-between list-reset text-2xl ">
-                        <li className="md:ml-4 list-reset">
-                            <NavLink
-                                className="no-underline text-green-light hover:text-blue-light"
-                                // activeClassName="active"
-                                // isActive={() => window.location.pathname === "/category"}
-                                to="/post/learn"
-                                data-category="learn"
-                                onClick={this.handleButtonClick}
+                            <li className="md:ml-4">
+                                <button
+                                    data-category="learn"
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    onClick={props.handleCategoryClick}
                                 >
-                                {/*to={`/category/${this.state.category}`}>*/}
-                                <h3>Learn</h3>
-                            </NavLink>
-                        </li>
+                                    <h3>Learn</h3>
+                                </button>
+                            </li>
 
-                        <li className="md:ml-4">
-                            <NavLink
-                                className="no-underline text-green-light hover:text-blue-light"
-                                // activeClassName="active"
-                                // isActive={() => window.location.pathname === "/category"}
-                                to="/post/teach"
-                                data-category="teach"
-                                onClick={this.handleButtonClick}
+                            <li className="md:ml-4">
+                                <button
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    data-category="teach"
+                                    onClick={props.handleCategoryClick}
                                 >
-                                <h3>Teach</h3>
-                            </NavLink>
-                        </li>
+                                    <h3>Teach</h3>
+                                </button>
+                            </li>
 
-                        <li className="md:ml-4">
-                            <NavLink
-                                className="no-underline text-green-light hover:text-blue-light"
-                                // activeClassName="active"
-                                // isActive={() => window.location.pathname === "/category"}
-                                to="/post/rant"
-                                data-category="rant"
-                                onClick={this.handleButtonClick}
+                            <li className="md:ml-4">
+                                <button
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    data-category="rant"
+                                    onClick={props.handleCategoryClick}
                                 >
-                                <h3>Rant</h3>
-                            </NavLink>
-                        </li>
+                                    <h3>Rant</h3>
+                                </button>
+                            </li>
 
-                        <li className="md:ml-4">
-                            <NavLink
-                                className="no-underline text-green-light hover:text-blue-light"
-                                // activeClassName="active"
-                                // isActive={() => window.location.pathname === "/category"}
-                                to="/post/successes"
-                                data-category="successes"
-                                onClick={this.handleButtonClick}
+                            <li className="md:ml-4">
+                                <button
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    data-category="successes"
+                                    onClick={props.handleCategoryClick}
                                 >
-                                <h3>Successes</h3>
-                            </NavLink>
-                        </li>
+                                    <h3>Successes</h3>
+                                </button>
+                            </li>
 
-                        <li className="md:ml-4">
-                            <NavLink
-                                className="no-underline text-green-light hover:text-blue-light"
-                                // activeClassName="active"
-                                // isActive={() => window.location.pathname === "/category"}
-                                to="/post/tipstricks"
-                                data-category="tipstricks"
-                                onClick={this.handleButtonClick}
+                            <li className="md:ml-4">
+                                <button
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    data-category="tipstricks"
+                                    onClick={props.handleCategoryClick}
                                 >
-                                <h3>Tips/Tricks</h3>
-                            </NavLink>
-                        </li>
+                                    <h3>Tips/Tricks</h3>
+                                </button>
+                            </li>
 
-                        <li className="md:ml-4">
-                            <NavLink
-                                className="no-underline text-green-light hover:text-blue-light"
-                                // activeClassName="active"
-                                // isActive={() => window.location.pathname === "/category"}
-                                to="/post/dadjokes"
-                                data-category="dadjokes"
-                                onClick={this.handleButtonClick}
+                            <li className="md:ml-4">
+                                <button
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    data-category="dadjokes"
+                                    onClick={props.handleCategoryClick}
                                 >
-                                <h3>Dad Jokes</h3>
-                            </NavLink>
-                        </li>
+                                    <h3>Dad Jokes</h3>
+                                </button>
+                            </li>
 
-                    </ul>
+
+                        </ul>
+                    </div>
+                    <div className="w-1/5 transparent"> </div>
                 </div>
-                <div className="w-1/5 transparent"> </div>
-                {/*</div>*/}
-            </div>
-        </header>
+            </header>
     );
 }
-}
 
-export default Header;
+export default withRouter(Header);
+
+
+
+// onClick={this.setState({isFiltered: true})}
+//
+// {this.state.categories.map(category =>
+//     <li
+//         id={this.state.category}
+//         key={this.state.category}
+//         className="md:ml-4 list-reset"
+//     >
+//         <Link
+//             className="no-underline text-green-light hover:text-blue-light"
+//
+//             to={`/posts/${this.state.category}`}
+//         >
+//
+//             <h3>{this.state.category}</h3>
+//         </Link>
+//     </li>
+// )}
+
+// constructor(props) {
+//     super(props)
+//     this.state = {
+//         categories: [],
+//     }
+// }
+//
+// componentDidMount() {
+//     this.getCategories();
+// }
+//
+// getCategories = (props) => {
+//     API.getPosts(this.props.match.params.category)
+//         .then(res =>
+//             this.setState({ posts: res.data, title: "", author: "", body: "", category: "", numLikes: "" })
+//         )
+//         .catch(err => console.log(err));
+// };
+
+//
+
+// handleButtonClick = (event) => {
+//     event.preventDefault();
+//
+//     const category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
+//     // const newState = { ...this.state };
+//
+//     // console.log(event.target);
+//     console.log(category);
+//
+//
+//
+// };
+
+

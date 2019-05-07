@@ -117,7 +117,7 @@ class Index extends Component {
                             <li key={post.title} className="px-4 py-4">
                                 <h1><Link to={`/post/${post._id}`} className="yourElement animated rubberBand no-underline text-blue-light hover:text-green-light ">{post.title}</Link></h1>
                                 <h3 className="py-2 leading-relaxed">written by:  {post.author}</h3>
-                                <p className="text-black py-2 leading-loose">{post.body}</p>
+                                <p id="post-body" className="text-black py-2 leading-loose md:overflow-scroll">{post.body}</p>
 
                                 <p className="text-grey-dark py-2">Category: {post.category}</p>
 

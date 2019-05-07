@@ -116,7 +116,7 @@ class Index extends Component {
                                 <li key={post.title} className="px-4 py-4 animated fadeInUp">
                                     <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
                                     <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
-                                    <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>
+                                    <p id="post-body" className="text-black py-2 animated fadeInRightBig">{post.body}</p>
 
                                     <p className="text-grey-dark py-2">Category: {post.category}</p>
 

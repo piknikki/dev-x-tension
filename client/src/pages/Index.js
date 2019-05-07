@@ -66,10 +66,10 @@ class Index extends Component {
                     <ul className="px-16 py-6 text-green-light  list-reset">
                         {this.state.posts.map(post => (
 
-                            <li key={post.title} className="px-4 py-4">
+                            <li key={post.title} className="px-4 py-4 animated fadeInUp">
                                 <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
-                                <h3 className="py2">written by:  {post.author}</h3>
-                                <p className="text-black py-2">{post.body}</p>
+                                <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
+                                <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>
 
                                 <p className="text-grey-dark">Category: {post.category}</p>
                                 <p>Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>

@@ -23,7 +23,7 @@ function App() {
                         <Route exact path="/new" component={New} />
                         <Route exact path= "/post/:id" component={Single} />
                         <Route exact path= "/edit/:id" component={Edit} />
-                        <Route exact path= "/category" componenet={Detail} />
+                        <Route exact path= "/post/:category" component={Detail} />
                         <Route component={NoMatch} />
                     </Switch>
                 </div>

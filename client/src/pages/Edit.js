@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
-// import API from "../utils/API";
+import API from "../utils/API";
+// import axios from "axios";
 
 class Edit extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class Edit extends Component {
 
     // when loaded, get one item by id
     componentDidMount() {
-        axios.get(`/api/posts/${this.props.match.params.id}`)
+        API.getPost(`${this.props.match.params.id}`)
             .then(post => { // singular item
                 this.setState({
                     title: post.data.title,
@@ -49,8 +49,9 @@ class Edit extends Component {
             body: this.state.body
         }
 
-        axios.put(`/api/posts/${this.props.match.params.id}`, obj)
-            .then(res => console.log(res.data));
+        API.editPost(`${this.props.match.params.id}`, obj)
+            .then(res => console.log(res.data))
+            .then(alert(`You've edited a post!`));
 
         this.setState({
             title: '',

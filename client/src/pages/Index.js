@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
-import axios from "axios";
 import "../css/styles.css"
 import Header from "../components/Header";
 
@@ -74,14 +73,13 @@ class Index extends Component {
 
         for (let i = 0; i < this.state.posts.length; i++) {
             if (this.state.posts[i]._id === id) {
-                // console.log(`Clicked ${id} on ${this.state.posts[i].title}.`);
                 newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
-                // console.log(newState.posts[i]);
-        axios.put(`/api/posts/${id}`, {numLikes: newState.posts[i].numLikes})
-        .then(res => this.loadPosts())
-        .catch(err => console.log(err));
-            }}
-        };
+                API.editPost({ numLikes: newState.posts[i].numLikes })
+                    .then(res => this.loadPosts())
+                    .catch(err => console.log(err));
+            }
+        }
+    };
 
     handleCategoryClick = (event) => {
         var category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
@@ -95,7 +93,7 @@ class Index extends Component {
 
         }
 
-        this.setState({posts: filteredArray});
+        this.setState({ posts: filteredArray });
         // this.loadPosts();
         console.log(filteredArray);
     };
@@ -104,48 +102,49 @@ class Index extends Component {
     render() {
         return (
             <>
-            <Header
-                value={this.state.posts}
-                handleCategoryClick={this.handleCategoryClick}
-            />
 
-            <div className="container">
-                <div className="list-reset ">
-                    <ul className="px-16 py-6 text-green-light list-reset ">
-                        {this.state.posts.map(post => (
+                <Header
+                    value={this.state.posts}
+                    handleCategoryClick={this.handleCategoryClick}
+                />
 
-                            <li key={post.title} className="px-4 py-4">
-                                <h1><Link to={`/post/${post._id}`} className="yourElement animated rubberBand no-underline text-blue-light hover:text-green-light ">{post.title}</Link></h1>
-                                <h3 className="py-2 leading-relaxed">written by:  {post.author}</h3>
-                                <p id="post-body" className="text-black py-2 leading-loose md:overflow-scroll">{post.body}</p>
+                <div className="container">
+                    <div className="list-reset ">
+                        <ul className="px-16 py-6 text-green-light list-reset ">
+                            {this.state.posts.map(post => (
 
-                                <p className="text-grey-dark py-2">Category: {post.category}</p>
+                                <li key={post.title} className="px-4 py-4 animated fadeInUp">
+                                    <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
+                                    <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
+                                    <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>
+
+                                    <p className="text-grey-dark py-2">Category: {post.category}</p>
 
                                     <p>Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
 
-                                <button
-                                    type="button"
-                                    className="bg-transparent text-blue-light"
-                                    data-action="like"
-                                    data-id={post._id}
-                                    onClick={this.handleButtonClick}>
-                                    Like
+                                    <button
+                                        type="button"
+                                        className="bg-transparent text-blue-light"
+                                        data-action="like"
+                                        data-id={post._id}
+                                        onClick={this.handleButtonClick}>
+                                        Like
                                 </button>
 
 
 
-                            </li>
-                        ))}
-                    </ul>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </>
+            </>
         )
     }
 
 
 
-//    end of the class
+    //    end of the class
 }
 
 export default Index;

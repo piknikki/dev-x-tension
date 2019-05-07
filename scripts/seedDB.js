@@ -37,7 +37,7 @@ const blogSeed = [
     title: "What do you call cheese that isn't yours?",
     body: "Nacho Cheese.",
     numLikes: 10,
-    category: "teach"
+    category: "dadjokes"
   },
   {
     author: "The Cat",

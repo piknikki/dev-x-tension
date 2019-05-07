@@ -30,17 +30,37 @@ class Index extends Component {
     showNumLikesIcon = (props) => {
         let postLikes = props;
 
-        if (postLikes >= 0 && postLikes < 7) {
-            return <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
-        } else if (postLikes >= 7 && postLikes < 15) {
-
-            return <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
-        } else if (postLikes >= 15 && postLikes < 25) {
-
-            return <i className="fas fa-bacon text-blue-light text-xl px-2"></i>
-        } else if (postLikes >= 25 && postLikes < 50) {
-
-            return <i className="fas fa-ice-cream text-green-light text-xl px-2"></i>
+        if (postLikes >= 25) {
+            return <>
+                <span className="">
+                <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
+                <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
+                <i className="fas fa-bacon text-blue-light text-xl px-2"></i>
+                <i className="fas fa-ice-cream text-green-light text-xl px-2"></i>
+                </span>
+            </>
+        }
+         else if (postLikes >= 15) {
+            return <>
+                <span className="">
+                <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
+                <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
+                <i className="fas fa-bacon text-blue-light text-xl px-2"></i>
+                </span>
+            </>
+        } else if (postLikes >= 7) {
+            return <>
+                <span className="">
+                <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
+                <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
+                </span>
+            </>
+        } else if (postLikes < 7) {
+            return <>
+                <span className="">
+                <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
+                </span>
+            </>
         }
 
     }
@@ -54,7 +74,6 @@ class Index extends Component {
         for (let i = 0; i < this.state.posts.length; i++) {
             if (this.state.posts[i]._id === id) {
                 newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
-                // axios.put(`/api/posts/${id}`, {numLikes: newState.posts[i].numLikes})
                 API.editPost({ numLikes: newState.posts[i].numLikes })
                     .then(res => this.loadPosts())
                     .catch(err => console.log(err));
@@ -63,14 +82,7 @@ class Index extends Component {
     };
 
     handleCategoryClick = (event) => {
-
-
-        console.log("this is hitting");
-
         var category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
-
-        console.log(category);
-
 
         const filteredArray = [];
 

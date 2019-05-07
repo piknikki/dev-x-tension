@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "../css/styles.css";
-// import API from "../utils/API";
 
 
 function Header(props) {

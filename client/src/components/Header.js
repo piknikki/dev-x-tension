@@ -1,31 +1,11 @@
-import React, { Component } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import React from "react";
+import { withRouter } from "react-router-dom";
 import "../css/styles.css";
+// import API from "../utils/API";
 
 
-class Header extends Component {
-    constructor(props) {
-    super(props)
-    this.state = {
-        posts: [],
-    }
-    }
+function Header(props) {
 
-    // handleButtonClick = (event) => {
-    //     event.preventDefault();
-    //
-    //     const category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
-    //     // const newState = { ...this.state };
-    //
-    //     // console.log(event.target);
-    //     console.log(category);
-    //
-    //
-    //
-    // };
-
-
-    render() {
         return (
             <header className="bg-white float-none justify-center py-2">
                 <div className="flex">
@@ -34,59 +14,63 @@ class Header extends Component {
                         <ul className="py-6 md:flex justify-center justify-between list-reset text-2xl ">
 
                             <li className="md:ml-4">
-                                <NavLink
+                                <button
+                                    data-category="learn"
                                     className="no-underline text-green-light hover:text-blue-light"
-                                    // data-category="learn"
-                                    // onClick={this.handleButtonClick}
-                                    to={`/post/:${this.state.category}`}
+                                    onClick={props.handleCategoryClick}
                                 >
                                     <h3>Learn</h3>
-                                </NavLink>
+                                </button>
                             </li>
 
                             <li className="md:ml-4">
-                                <NavLink
+                                <button
                                     className="no-underline text-green-light hover:text-blue-light"
-                                    to="/posts/category"
+                                    data-category="teach"
+                                    onClick={props.handleCategoryClick}
                                 >
                                     <h3>Teach</h3>
-                                </NavLink>
+                                </button>
                             </li>
 
                             <li className="md:ml-4">
-                                <NavLink
+                                <button
                                     className="no-underline text-green-light hover:text-blue-light"
-                                    to="/posts/category"
+                                    data-category="rant"
+                                    onClick={props.handleCategoryClick}
                                 >
                                     <h3>Rant</h3>
-                                </NavLink>
+                                </button>
                             </li>
 
                             <li className="md:ml-4">
-                                <NavLink
+                                <button
                                     className="no-underline text-green-light hover:text-blue-light"
-                                    to="/posts/category"
+                                    data-category="successes"
+                                    onClick={props.handleCategoryClick}
                                 >
                                     <h3>Successes</h3>
-                                </NavLink>
+                                </button>
                             </li>
 
                             <li className="md:ml-4">
-                                <NavLink
+                                <button
                                     className="no-underline text-green-light hover:text-blue-light"
-                                    to="/posts/category"
+                                    data-category="tipstricks"
+                                    onClick={props.handleCategoryClick}
                                 >
                                     <h3>Tips/Tricks</h3>
-                                </NavLink>
+                                </button>
                             </li>
 
                             <li className="md:ml-4">
-                                <NavLink
+                                <button
                                     className="no-underline text-green-light hover:text-blue-light"
-                                    to="/posts/category"
+                                    data-category="dadjokes"
+                                    onClick={props.handleCategoryClick}
                                 >
                                     <h3>Dad Jokes</h3>
-                                </NavLink>
+                                </button>
                             </li>
 
 
@@ -95,12 +79,14 @@ class Header extends Component {
                     <div className="w-1/5 transparent"> </div>
                 </div>
             </header>
-    )};
+    );
 }
 
 export default withRouter(Header);
 
 
+
+// onClick={this.setState({isFiltered: true})}
 //
 // {this.state.categories.map(category =>
 //     <li
@@ -140,5 +126,17 @@ export default withRouter(Header);
 
 //
 
+// handleButtonClick = (event) => {
+//     event.preventDefault();
+//
+//     const category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
+//     // const newState = { ...this.state };
+//
+//     // console.log(event.target);
+//     console.log(category);
+//
+//
+//
+// };
 
 

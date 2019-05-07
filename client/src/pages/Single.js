@@ -38,17 +38,6 @@ class Single extends Component {
             .catch(err => console.log(err));
     }
 
-//     handleClick(event) {
-// //         this.props.history.push("/edit")
-// //     }
-// //
-// // <button
-// //     // to={`/edit/${this.state.post._id}`}
-// // onClick={this.handleClick}
-// // className="bg-blue-light align-middle no-underline h-12 text-lg hover:bg-blue-dark text-white font-bold mx-4 py4 px-6 border-b-4 border-blue-dark hover:border-blue rounded"
-// // >
-// // Edit
-// // </button>
 
     render() {
         return (

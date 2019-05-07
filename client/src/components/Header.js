@@ -45,10 +45,10 @@ function Header(props) {
                             <li className="md:ml-4">
                                 <button
                                     className="no-underline text-green-light hover:text-blue-light"
-                                    data-category="successes"
+                                    data-category="success"
                                     onClick={props.handleCategoryClick}
                                 >
-                                    <h3>Successes</h3>
+                                    <h3>Success</h3>
                                 </button>
                             </li>
 

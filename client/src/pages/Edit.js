@@ -64,9 +64,9 @@ class Edit extends Component {
 
     render() {
         return (
-            <div className="m-8">
+            <div className="container m-8 flex flex-wrap px-16 py-6">
                 <h1 className="text-blue-light">Update an existing post</h1>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} className="w-full md:w-3/4">
                     <div className="m-8 ">
                         <label
                             htmlFor="title"

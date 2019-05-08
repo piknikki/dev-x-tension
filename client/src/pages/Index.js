@@ -80,16 +80,6 @@ class Index extends Component {
             }}
     };
 
-    //     for (let i = 0; i < this.state.posts.length; i++) {
-    //         if (this.state.posts[i]._id === id) {
-    //             newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
-    //             API.editPost({ numLikes: newState.posts[i].numLikes })
-    //                 .then(res => this.loadPosts())
-    //                 .catch(err => console.log(err));
-    //         }
-    //     }
-    // };
-
     handleCategoryClick = (event) => {
         event.preventDefault();
         const filteredArray = [];

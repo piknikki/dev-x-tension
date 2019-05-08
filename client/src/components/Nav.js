@@ -20,7 +20,7 @@ const Nav = () => {
                             activeClassName="active"
                             isActive={ () => window.location.pathname === "/" }
                             to="/"
-                            onClick={() => window.location.reload()}
+                            onClick={() => this.props.history.push("/")}
                         >
                             Home
                         </NavLink>

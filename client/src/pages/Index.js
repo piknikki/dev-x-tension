@@ -19,12 +19,6 @@ class Index extends Component {
         this.loadPosts();
     }
 
-    // componentWillUpdate() {
-    //     console.log(`Page is rerendering`);
-    //     if this.setState({ filteredposts:  });
-    // }
-
-
     loadPosts = () => {
         API.getPosts()
             .then(res =>

@@ -12,6 +12,16 @@ function Header(props) {
                     <div className="w-3/5 px-2">
                         <ul className="py-6 md:flex justify-center justify-between list-reset text-2xl ">
 
+                        <li className="md:ml-4">
+                                <button
+                                    data-category="all"
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    onClick={() => window.location.reload()}
+                                >
+                                    <h3>All</h3>
+                                </button>
+                            </li>
+
                             <li className="md:ml-4">
                                 <button
                                     data-category="learn"

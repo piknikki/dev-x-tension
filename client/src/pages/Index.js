@@ -10,6 +10,7 @@ class Index extends Component {
         super(props)
         this.state = {
             posts: [],
+            filteredposts: [],
         }
     }
 
@@ -17,6 +18,11 @@ class Index extends Component {
     componentDidMount() {
         this.loadPosts();
     }
+
+    // componentWillUpdate() {
+    //     console.log(`Page is rerendering`);
+    //     if this.setState({ filteredposts:  });
+    // }
 
 
     loadPosts = () => {
@@ -27,39 +33,38 @@ class Index extends Component {
             .catch(err => console.log(err));
     };
 
-
     showNumLikesIcon = (props) => {
         let postLikes = props;
 
         if (postLikes >= 25) {
             return <>
                 <span className="">
-                <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
-                <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
-                <i className="fas fa-bacon text-blue-light text-xl px-2"></i>
-                <i className="fas fa-ice-cream text-green-light text-xl px-2"></i>
+                    <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
+                    <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
+                    <i className="fas fa-bacon text-blue-light text-xl px-2"></i>
+                    <i className="fas fa-ice-cream text-green-light text-xl px-2"></i>
                 </span>
             </>
         }
-         else if (postLikes >= 15) {
+        else if (postLikes >= 15) {
             return <>
                 <span className="">
-                <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
-                <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
-                <i className="fas fa-bacon text-blue-light text-xl px-2"></i>
+                    <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
+                    <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
+                    <i className="fas fa-bacon text-blue-light text-xl px-2"></i>
                 </span>
             </>
         } else if (postLikes >= 7) {
             return <>
                 <span className="">
-                <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
-                <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
+                    <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
+                    <i className="fas fa-stroopwafel text-green-light text-xl px-2"></i>
                 </span>
             </>
         } else if (postLikes < 7) {
             return <>
                 <span className="">
-                <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
+                    <i className="fas fa-pizza-slice text-blue-light text-xl px-2"></i>
                 </span>
             </>
         }
@@ -92,18 +97,17 @@ class Index extends Component {
     // };
 
     handleCategoryClick = (event) => {
-        var category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
-
+        event.preventDefault();
         const filteredArray = [];
+        filteredArray.length = 0;
+        var category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
 
         for (let i = 0; i < this.state.posts.length; i++) {
             if (category === this.state.posts[i].category) {
-                filteredArray.push(this.state.posts[i])
+                filteredArray.push(this.state.posts[i]);
             }
+            this.setState({ filteredposts: filteredArray });
         }
-
-        this.setState({ posts: filteredArray });
-
     };
 
 
@@ -119,28 +123,61 @@ class Index extends Component {
                 <div className="container">
                     <div className="list-reset ">
                         <ul className="px-16 py-6 text-green-light list-reset ">
-                            {this.state.posts.map(post => (
+                            {this.state.filteredposts.length ? (
+                                <>
+                                    {this.state.filteredposts.map(post => (
 
-                                <li key={post.title} className="px-4 py-4 animated fadeInUp">
-                                    <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
-                                    <h3 className="py-2 animated fadeInLeft">written by:  {post.author}</h3>
-                                    <p id="post-body" className="text-black py-2 animated fadeInRightBig">{post.body}</p>
+                                        <li key={post.title} className="px-4 py-4 animated fadeInUp">
+                                            <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
+                                            <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
+                                            <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>
 
-                                    <p className="text-grey-dark py-2">Category: {post.category}</p>
-                                    <p>Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
-                                    <button
-                                        type="button"
-                                        className="bg-transparent text-blue-light py-2"
-                                        data-action="like"
-                                        data-id={post._id}
-                                        onClick={this.handleButtonClick}>
-                                        Like
+                                            <p className="text-grey-dark py-2">Category: {post.category}</p>
+                                            <p className="animated shake">Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
+
+                                            <button
+                                                type="button"
+                                                className="bg-transparent text-blue-light"
+                                                data-action="like"
+                                                data-id={post._id}
+                                                onClick={this.handleButtonClick}>
+                                                Like
                                 </button>
+                                        </li>
+                                    ))}
+                                </>
+                            )
+                                :
 
+                                (
+                                    <>
+                                        {this.state.posts.map(post => (
 
+                                            <li key={post.title} className="px-4 py-4 animated fadeInUp">
+                                                <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
+                                                <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
+                                                <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>
 
-                                </li>
-                            ))}
+                                                <p className="text-grey-dark py-2">Category: {post.category}</p>
+                                                <p className="animated shake">Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
+
+                                                <button
+                                                    type="button"
+                                                    className="bg-transparent text-blue-light"
+                                                    data-action="like"
+                                                    data-id={post._id}
+                                                    onClick={this.handleButtonClick}>
+                                                    Like
+                                                </button>
+                                            </li>
+
+                                        ))
+
+                                        }
+                                    </>
+                                )
+                            }
+
                         </ul>
                     </div>
                 </div>

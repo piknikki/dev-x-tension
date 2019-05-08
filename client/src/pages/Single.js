@@ -49,7 +49,7 @@ class Single extends Component {
                 </div>
 
                 <div className="w-full md:w-1/4">
-                    <button className="bg-blue-light align-middle no-underline h-12 text-lg hover:bg-blue-dark text-white font-bold mx-4 py4 px-6 border-b-4 border-blue-dark hover:border-blue rounded">
+                    <button className="bg-blue-light align-middle no-underline h-12 text-lg hover:bg-blue-dark text-white font-bold mx-4 py6 px-6 border-b-4 border-blue-dark hover:border-blue rounded">
                         <NavLink
                             to={`/edit/${this.state.post._id}`}
                             className="align-middle no-underline text-white font-bold "
@@ -59,7 +59,7 @@ class Single extends Component {
                     </button>
                         <button
                             onClick={event => this.onDelete(event)}
-                            className="bg-green-light h-12 text-lg hover:bg-green-dark text-white font-bold mx-4py4 px-6 border-b-4 border-green-dark hover:border-green rounded"
+                            className="bg-green-light h-12 text-lg hover:bg-green-dark text-white font-bold mx-4 py4 px-4 border-b-4 border-green-dark hover:border-green rounded"
                         >
                             Delete
                         </button>

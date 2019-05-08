@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import API from "../utils/API";
 import "../css/styles.css"
 import Header from "../components/Header";
+import axios from "axios";
 
 class Index extends Component {
     constructor(props) {
@@ -68,17 +69,27 @@ class Index extends Component {
     handleButtonClick = (event) => {
         event.preventDefault();
 
-        const id = event.target.getAttribute("data-id");
+        const id = event.target.getAttribute("data-id") || event.target.parentNode.getAttribute("data-id");
         const newState = { ...this.state };
 
+    //     for (let i = 0; i < this.state.posts.length; i++) {
+    //         if (this.state.posts[i]._id === id) {
+    //             newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
+    //             API.editPost({ numLikes: newState.posts[i].numLikes })
+    //                 .then(res => this.loadPosts())
+    //                 .catch(err => console.log(err));
+    //         }
+    //     }
+    // };
         for (let i = 0; i < this.state.posts.length; i++) {
             if (this.state.posts[i]._id === id) {
+                // console.log(`Clicked ${id} on ${this.state.posts[i].title}.`);
                 newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
-                API.editPost({ numLikes: newState.posts[i].numLikes })
+                // console.log(newState.posts[i]);
+                axios.put(`/api/posts/${id}`, {numLikes: newState.posts[i].numLikes})
                     .then(res => this.loadPosts())
                     .catch(err => console.log(err));
-            }
-        }
+            }}
     };
 
     handleCategoryClick = (event) => {
@@ -119,12 +130,10 @@ class Index extends Component {
                                     <p id="post-body" className="text-black py-2 animated fadeInRightBig">{post.body}</p>
 
                                     <p className="text-grey-dark py-2">Category: {post.category}</p>
-
-                                    <p>Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
-
+                                    <p>Number of likes: {post.numLikes} . . . {this.showNumLikesIcon(post.numLikes)}</p>
                                     <button
                                         type="button"
-                                        className="bg-transparent text-blue-light"
+                                        className="bg-transparent text-blue-light py-2"
                                         data-action="like"
                                         data-id={post._id}
                                         onClick={this.handleButtonClick}>

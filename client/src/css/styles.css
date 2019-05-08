@@ -23,4 +23,5 @@ body {
     width: 100ch;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 100%;
 }

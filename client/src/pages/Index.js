@@ -72,6 +72,15 @@ class Index extends Component {
         const id = event.target.getAttribute("data-id") || event.target.parentNode.getAttribute("data-id");
         const newState = { ...this.state };
 
+        for (let i = 0; i < this.state.posts.length; i++) {
+            if (this.state.posts[i]._id === id) {
+                newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
+                axios.put(`/api/posts/${id}`, {numLikes: newState.posts[i].numLikes})
+                    .then(res => this.loadPosts())
+                    .catch(err => console.log(err));
+            }}
+    };
+
     //     for (let i = 0; i < this.state.posts.length; i++) {
     //         if (this.state.posts[i]._id === id) {
     //             newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
@@ -81,16 +90,6 @@ class Index extends Component {
     //         }
     //     }
     // };
-        for (let i = 0; i < this.state.posts.length; i++) {
-            if (this.state.posts[i]._id === id) {
-                // console.log(`Clicked ${id} on ${this.state.posts[i].title}.`);
-                newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
-                // console.log(newState.posts[i]);
-                axios.put(`/api/posts/${id}`, {numLikes: newState.posts[i].numLikes})
-                    .then(res => this.loadPosts())
-                    .catch(err => console.log(err));
-            }}
-    };
 
     handleCategoryClick = (event) => {
         var category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
@@ -101,12 +100,10 @@ class Index extends Component {
             if (category === this.state.posts[i].category) {
                 filteredArray.push(this.state.posts[i])
             }
-
         }
 
         this.setState({ posts: filteredArray });
-        // this.loadPosts();
-        console.log(filteredArray);
+
     };
 
 
@@ -126,11 +123,11 @@ class Index extends Component {
 
                                 <li key={post.title} className="px-4 py-4 animated fadeInUp">
                                     <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
-                                    <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
+                                    <h3 className="py-2 animated fadeInLeft">written by:  {post.author}</h3>
                                     <p id="post-body" className="text-black py-2 animated fadeInRightBig">{post.body}</p>
 
                                     <p className="text-grey-dark py-2">Category: {post.category}</p>
-                                    <p>Number of likes: {post.numLikes} . . . {this.showNumLikesIcon(post.numLikes)}</p>
+                                    <p>Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
                                     <button
                                         type="button"
                                         className="bg-transparent text-blue-light py-2"

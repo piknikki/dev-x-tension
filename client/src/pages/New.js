@@ -81,12 +81,12 @@ class New extends Component {
                             onChange={this.handleInputChange}
                             value={this.state.category}>
                             <option value="0">Select category:</option>
-                            <option value="Teach">Teach</option>
-                            <option value="Question">Question</option>
-                            <option value="Rant">Rant</option>
-                            <option value="Success">Success</option>
-                            <option value="TipsTricks">Tips/Tricks</option>
-                            <option value="DadJokes">Dad Jokes</option>
+                            <option value="teach">Teach</option>
+                            <option value="question">Question</option>
+                            <option value="rant">Rant</option>
+                            <option value="success">Success</option>
+                            <option value="tipstricks">Tips/Tricks</option>
+                            <option value="dadjokes">Dad Jokes</option>
                         </select>
                     </div>
 

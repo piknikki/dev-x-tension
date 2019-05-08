@@ -43,9 +43,9 @@ class Single extends Component {
         return (
             <div className="container m-8 flex flex-wrap px-16 py-6">
                 <div className="w-full md:w-3/4">
-                    <h1 className="text-blue-light py-2">{this.state.post.title}</h1>
-                    <h3 className="text-green-light py-2">{this.state.post.author}</h3>
-                    <p className="text-black py-2 leading-loose">{this.state.post.body}</p>
+                    <h1 className="text-blue-light py-2 animated bounceInRight">{this.state.post.title}</h1>
+                    <h3 className="text-green-light py-2 animated bounceInLeft">{this.state.post.author}</h3>
+                    <p className="text-black py-2 leading-loose animated bounceInUp">{this.state.post.body}</p>
                 </div>
 
                 <div className="w-full md:w-1/4">

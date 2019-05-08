@@ -18,9 +18,9 @@ const Nav = () => {
                         <NavLink
                             className="no-underline text-green-light hover:text-blue-light"
                             activeClassName="active"
-                            isActive={ () => window.location.pathname === "/new" }
+                            isActive={ () => window.location.pathname === "/" }
                             to="/"
-                            onClick={() => window.location.reload()}
+                            onClick={() => this.props.history.push("/")}
                         >
                             Home
                         </NavLink>

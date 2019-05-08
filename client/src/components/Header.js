@@ -12,7 +12,7 @@ function Header(props) {
                     <div className="w-3/5 px-2">
                         <ul className="py-6 md:flex justify-center justify-between list-reset text-2xl ">
 
-                            <li className="md:ml-4">
+                            <li className="md:ml-4 mx-2">
                                 <button
                                     data-category="learn"
                                     className="no-underline text-green-light hover:text-blue-light"
@@ -22,7 +22,7 @@ function Header(props) {
                                 </button>
                             </li>
 
-                            <li className="md:ml-4">
+                            <li className="md:ml-4 mx-2">
                                 <button
                                     className="no-underline text-green-light hover:text-blue-light"
                                     data-category="teach"
@@ -32,7 +32,7 @@ function Header(props) {
                                 </button>
                             </li>
 
-                            <li className="md:ml-4">
+                            <li className="md:ml-4 mx-2">
                                 <button
                                     className="no-underline text-green-light hover:text-blue-light"
                                     data-category="rant"
@@ -42,7 +42,7 @@ function Header(props) {
                                 </button>
                             </li>
 
-                            <li className="md:ml-4">
+                            <li className="md:ml-4 mx-2">
                                 <button
                                     className="no-underline text-green-light hover:text-blue-light"
                                     data-category="success"
@@ -52,7 +52,7 @@ function Header(props) {
                                 </button>
                             </li>
 
-                            <li className="md:ml-4">
+                            <li className="md:ml-4 mx-2">
                                 <button
                                     className="no-underline text-green-light hover:text-blue-light"
                                     data-category="tipstricks"
@@ -62,7 +62,7 @@ function Header(props) {
                                 </button>
                             </li>
 
-                            <li className="md:ml-4">
+                            <li className="md:ml-4 mx-2">
                                 <button
                                     className="no-underline text-green-light hover:text-blue-light"
                                     data-category="dadjokes"

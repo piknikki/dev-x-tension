@@ -17,3 +17,11 @@ body {
     animation-delay: 0;
     animation-iteration-count: infinite;
 }
+
+#post-body {
+    white-space: nowrap;
+    width: 100ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}

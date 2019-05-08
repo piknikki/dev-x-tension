@@ -13,6 +13,7 @@ const Nav = () => {
                 </div>
                 <div className="container">
                 <ul className="md:flex md:items-center px-3 list-reset text-xl">
+
                     <li className="md:ml-4">
                         <NavLink
                             className="no-underline text-green-light hover:text-blue-light"
@@ -22,6 +23,7 @@ const Nav = () => {
                             Home
                         </NavLink>
                     </li>
+
                     <li className="md:ml-4">
                         <NavLink
                             className="no-underline text-green-light hover:text-blue-light"
@@ -31,6 +33,17 @@ const Nav = () => {
                             New Post
                         </NavLink>
                     </li>
+
+                    <li className="md:ml-4">
+                        <NavLink
+                            className="no-underline text-green-light hover:text-blue-light"
+                            activeClassName="active"
+                            isActive={ () => window.location.pathname === "/about" }
+                            to="/about">
+                            About
+                        </NavLink>
+                    </li>
+
                 </ul>
                 </div>
             </div>

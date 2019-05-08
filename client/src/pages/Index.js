@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import API from "../utils/API";
 import "../css/styles.css"
 import Header from "../components/Header";
+import axios from "axios";
 
 class Index extends Component {
     constructor(props) {
@@ -73,20 +74,27 @@ class Index extends Component {
     handleButtonClick = (event) => {
         event.preventDefault();
 
-        const id = event.target.getAttribute("data-id");
+        const id = event.target.getAttribute("data-id") || event.target.parentNode.getAttribute("data-id");
         const newState = { ...this.state };
 
         for (let i = 0; i < this.state.posts.length; i++) {
             if (this.state.posts[i]._id === id) {
                 newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
-                API.editPost({ numLikes: newState.posts[i].numLikes })
+                axios.put(`/api/posts/${id}`, {numLikes: newState.posts[i].numLikes})
                     .then(res => this.loadPosts())
                     .catch(err => console.log(err));
-            }
-        }
+            }}
     };
 
-
+    //     for (let i = 0; i < this.state.posts.length; i++) {
+    //         if (this.state.posts[i]._id === id) {
+    //             newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
+    //             API.editPost({ numLikes: newState.posts[i].numLikes })
+    //                 .then(res => this.loadPosts())
+    //                 .catch(err => console.log(err));
+    //         }
+    //     }
+    // };
 
     handleCategoryClick = (event) => {
         event.preventDefault();
@@ -106,6 +114,7 @@ class Index extends Component {
     render() {
         return (
             <>
+
                 <Header
                     value={this.state.posts}
                     handleCategoryClick={this.handleCategoryClick}

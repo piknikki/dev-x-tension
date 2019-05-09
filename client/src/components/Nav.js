@@ -18,8 +18,8 @@ const Nav = () => {
                         <NavLink
                             className="no-underline text-green-light hover:text-blue-light"
                             activeClassName="active"
-                            isActive={ () => window.location.pathname === "/" }
-                            to="/"
+                            isActive={ () => window.location.pathname === "/index" }
+                            to="/index"
                             onClick={() => window.location.reload()}
                         >
                             Home
@@ -43,6 +43,16 @@ const Nav = () => {
                             isActive={ () => window.location.pathname === "/about" }
                             to="/about">
                             About
+                        </NavLink>
+                    </li>
+
+                    <li className="md:ml-4  mx-2">
+                        <NavLink
+                            className="no-underline text-green-light hover:text-blue-light"
+                            activeClassName="active"
+                            isActive={ () => window.location.pathname === "/signup" }
+                            to="/signup">
+                            Sign-Up
                         </NavLink>
                     </li>
 

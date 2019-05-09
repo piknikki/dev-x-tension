@@ -94,7 +94,14 @@ const blogSeed = [
     body: "Threepio! Come in, Threepio! Threepio! Get to the top! I can’t Where could he be? Threepio! Threepio, will you come in? They aren’t here! Something must have happened to them. See if they’ve been captured. Hurry! One thing’s for sure. We’re all going to be a lot thinner! Get on top of it! I’m trying! Thank goodness, they haven’t found them! Where could they be? Use the comlink? Oh, my! I forgot I turned it off! Are you there, sir? ",
     numLikes: 20,
     category: "learn"
-  }
+  },
+  {
+    author: "Yumikat",
+    title: "Do this one thing to improve your humor",
+    body: "All you need to do is smile.",
+    numLikes: 0,
+    category: "tipstricks"
+  },
 
 
 

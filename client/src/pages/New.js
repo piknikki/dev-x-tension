@@ -79,7 +79,8 @@ class New extends Component {
                             id="categoryChoice"
                             name="categoryChoice"
                             onChange={this.handleInputChange}
-                            value={this.state.category}>
+                            value={this.state.category}
+                        >
                             <option value="0">Select category:</option>
                             <option value="teach">Teach</option>
                             <option value="question">Question</option>

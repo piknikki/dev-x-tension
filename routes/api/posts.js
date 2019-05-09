@@ -11,12 +11,6 @@ router
     .put(postsController.update)
     .delete(postsController.remove);
 
-// router
-//     .route("/:category")
-//     // .get(postsController.findById)
-//     // .get(postsController.findByCategory)
-//     .get(postsController.findAll)
-//     .post(postsController.create);
 
 
 module.exports = router;

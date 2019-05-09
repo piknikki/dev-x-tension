@@ -17,6 +17,44 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.post("/signup", function(req, res) {
+  const email = req.body.email;
+
+  // js object will need to be stringified
+
+
+  const jsonData = JSON.stringify(data);
+
+  const options = {
+    url: "https://us20.api.mailchimp.com/3.0/lists/a8cee5253f",
+    method: "POST",
+    headers: {
+      "Authorization": `devxtensionapi ${apikey}`
+    },
+    body: JSON.stringify({ email_address: email, status: "subscribed" })
+  }
+
+
+  // call the function
+  request(options, function(error, response, body) {
+    try {
+      var respObj = {};
+
+      if (response.statusCode === 200) {
+        respObj = { success: `Subscribed using ${email}`, message: JSON.parse(response.body) }
+      } else {}
+
+      res.send(respObj);
+
+    } catch(err) {
+      var respErrorObj = { error: `There was an error with your request`, message:  err.message }
+      res.send(respErrorObj)
+      console.log(err)
+    }
+
+  })
+
+});
 
 //Routes
 app.use(routes);
@@ -32,6 +70,12 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+
+
+
+
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build.index.html"));

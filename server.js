@@ -48,11 +48,12 @@ app.post("/signup", function(req, res) {
         respObj = { error: `Error trying to subscribe ${email}. Please try again.`, message: JSON.parse(response.body) };
       }
         res.send(respObj);
+      console.log(respObj)
 
     } catch(err) {
       const respErrorObj = { error: `There was an error with your request`, message:  err.message }
       res.send(respErrorObj)
-      console.log(err)
+      console.log(respErrorObj)
     }
 
   })

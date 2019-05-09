@@ -50,15 +50,18 @@ class Edit extends Component {
         }
 
         API.editPost(`${this.props.match.params.id}`, obj)
-            .then(res => console.log(res.data))
-            .then(alert(`You've edited a post!`));
+            .then(res => {
+                console.log(res.data);
+                this.props.history.push("/");
+            // .then(alert(`You've edited a post!`));
 
         this.setState({
             title: '',
             author: '',
             body: ''
         })
-        }
+        });
+    }
 
 
 

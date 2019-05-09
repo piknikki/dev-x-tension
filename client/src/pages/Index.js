@@ -4,6 +4,9 @@ import API from "../utils/API";
 import "../css/styles.css"
 import Header from "../components/Header";
 import axios from "axios";
+const _ = require("lodash");
+
+
 
 class Index extends Component {
     constructor(props) {
@@ -74,21 +77,12 @@ class Index extends Component {
         for (let i = 0; i < this.state.posts.length; i++) {
             if (this.state.posts[i]._id === id) {
                 newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
-                axios.put(`/api/posts/${id}`, {numLikes: newState.posts[i].numLikes})
+                axios.put(`/api/posts/${id}`, { numLikes: newState.posts[i].numLikes })
                     .then(res => this.loadPosts())
                     .catch(err => console.log(err));
-            }}
+            }
+        }
     };
-
-    //     for (let i = 0; i < this.state.posts.length; i++) {
-    //         if (this.state.posts[i]._id === id) {
-    //             newState.posts[i].numLikes = newState.posts[i].numLikes + 1;
-    //             API.editPost({ numLikes: newState.posts[i].numLikes })
-    //                 .then(res => this.loadPosts())
-    //                 .catch(err => console.log(err));
-    //         }
-    //     }
-    // };
 
     handleCategoryClick = (event) => {
         event.preventDefault();
@@ -96,11 +90,17 @@ class Index extends Component {
         filteredArray.length = 0;
         var category = event.target.getAttribute("data-category") || event.target.parentNode.getAttribute("data-category");
 
-        for (let i = 0; i < this.state.posts.length; i++) {
-            if (category === this.state.posts[i].category) {
-                filteredArray.push(this.state.posts[i]);
+        if (category === "popular") {
+            const newState = [...this.state.posts];
+            filteredArray.push(_.orderBy(newState, ['numLikes'], ['desc']));
+            this.setState({ filteredposts: filteredArray[0] });
+        } else {
+            for (let i = 0; i < this.state.posts.length; i++) {
+                if (category === this.state.posts[i].category) {
+                    filteredArray.push(this.state.posts[i]);
+                }
+                this.setState({ filteredposts: filteredArray });
             }
-            this.setState({ filteredposts: filteredArray });
         }
     };
 
@@ -121,7 +121,7 @@ class Index extends Component {
                                 <>
                                     {this.state.filteredposts.map(post => (
 
-                                        <li key={post.title} className="px-4 py-4 animated fadeInUp">
+                                        <li key={post._id} className="px-4 py-4 animated fadeInUp">
                                             <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
                                             <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
                                             <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>
@@ -136,7 +136,7 @@ class Index extends Component {
                                                 data-id={post._id}
                                                 onClick={this.handleButtonClick}>
                                                 Like
-                                </button>
+                                            </button>
                                         </li>
                                     ))}
                                 </>
@@ -147,7 +147,7 @@ class Index extends Component {
                                     <>
                                         {this.state.posts.map(post => (
 
-                                            <li key={post.title} className="px-4 py-4 animated fadeInUp">
+                                            <li key={post._id} className="px-4 py-4 animated fadeInUp">
                                                 <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
                                                 <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
                                                 <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>

@@ -82,6 +82,16 @@ function Header(props) {
                                 </button>
                             </li>
 
+                            <li className="md:ml-4 mx-2">
+                                <button
+                                    className="no-underline text-green-light hover:text-blue-light"
+                                    data-category="popular"
+                                    onClick={props.handleCategoryClick}
+                                >
+                                    <h3>Popular</h3>
+                                </button>
+                            </li>
+
 
                         </ul>
                     </div>

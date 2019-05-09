@@ -20,10 +20,21 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.post("/signup", function(req, res) {
+app.post("/signup/", function(req, res) {
   const email = req.body.email;
 
   console.log("this is the app.post email:  " + req.body.email);
+
+  const data = {
+    members: [
+      {
+        email_address: email,
+        status: "subscribed"
+      }
+    ]
+  }
+
+  const jsonData = JSON.stringify(data);
 
   const options = {
     url: `https://us20.api.mailchimp.com/3.0/lists/${process.env.id}`,
@@ -31,9 +42,9 @@ app.post("/signup", function(req, res) {
     headers: {
       "Authorization": `devxtensionapi ${process.env.apikey}`
     },
-    body: JSON.stringify({ email_address: email, status: "subscribed" })
-  }
+    body: jsonData
 
+  }
 
   // call the function
   request(options, function(error, response, body) {

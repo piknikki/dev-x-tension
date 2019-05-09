@@ -32,7 +32,7 @@ class Single extends Component {
         API.deletePost(this.props.match.params.id)
             .then(post => {
                 this.getPost();
-                alert("Post successfully deleted.");
+                // alert("Post successfully deleted.");
                 this.props.history.push("/");  // ***********************
             })
             .catch(err => console.log(err));

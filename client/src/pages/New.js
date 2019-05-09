@@ -49,7 +49,7 @@ class New extends Component {
             API.savePost(data)
                 .then(
                     post => {
-                    alert("Post successfully created.");
+                    // alert("Post successfully created.");
                     document.getElementById("new").reset(); // reset the form
                     this.props.history.push("/"); // push to history to keep track of posts
                 }

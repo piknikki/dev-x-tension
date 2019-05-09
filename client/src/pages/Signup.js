@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "../css/styles.css";
+import axios from "axios";
 
 class Signup extends Component {
     constructor(props) {
@@ -27,11 +28,17 @@ class Signup extends Component {
     onSubmit = (event) => {
         event.preventDefault();
 
-        // const data = {
-        //     email: this.state.email
-        // }
-
         console.log(this.state.email);
+
+        axios.post("/signup", { email: this.state.email })
+            .then(res => {
+                if (res.data.success) {
+                    this.setState({ email: '' });
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
     }
 
@@ -122,8 +129,7 @@ export default withRouter(Signup);
 
 
 
-// key: 4a8eff1fc62203038173f4076f641d23-us20
-// id: a8cee5253f
+
 
 
 

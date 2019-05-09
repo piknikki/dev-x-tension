@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3001;
 const routes = require("./routes");
 const morgan = require("morgan");
 const _= require("lodash");
+require("dotenv");
 
 const Post = require("./models/post");
 
@@ -43,9 +44,10 @@ app.post("/signup", function(req, res) {
 
       if (response.statusCode === 200) {
         respObj = { success: `Subscribed using ${email}`, message: JSON.parse(response.body) }
-      } else {}
-
-      res.send(respObj);
+      } else {
+        respObj = { error: `Error trying to subscribe ${email}. Please try again.`, message: JSON.parse(response.body) }
+      }
+        res.send(respObj);
 
     } catch(err) {
       var respErrorObj = { error: `There was an error with your request`, message:  err.message }

@@ -1,103 +1,115 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "../css/styles.css";
+import styled from "styled-components";
+import {
+    Nav,
+    NavLink
+} from 'reactstrap';
+
+const CategoryStyles = styled.div`
+    .nav-item {
+        display: inline;
+        color: #22FA93;
+        font-family: 'Quicksand', serif;
+        list-style-type: none;
+        font-size: 1.2rem;
+    }
+
+    .nav-item:hover {
+        color: #0AE0FF;
+        list-style-type: none;
+    }
+    
+    .categories {
+        padding: 30px 0;
+        color: #22FA93;
+    }
+    
+`
 
 
 function Header(props) {
 
         return (
-            <header className="bg-white float-none justify-center py-2">
-                <div className="flex">
-                    <div className="w-1/5 transparent"> </div>
-                    <div className="w-3/5 px-2">
-                        <ul className="py-6 md:flex justify-center justify-between list-reset text-2xl ">
+            <CategoryStyles>
+                    <Nav className="ml-auto categories">
 
-                        <li className="md:ml-4">
-                                <button
-                                    data-category="all"
-                                    className="no-underline text-green-light hover:text-blue-light"
-                                    onClick={() => window.location.reload()}
+                        <NavLink
+                            data-category="all"
+                            className="nav-item"
+                            onClick={() => window.location.reload()}
                                 >
                                     <h3>All</h3>
-                                </button>
-                            </li>
 
-                            <li className="md:ml-4">
-                                <button
+                            </NavLink>
+
+                            <NavLink
                                     data-category="learn"
-                                    className="no-underline text-green-light hover:text-blue-light"
+                                    className="nav-item"
                                     onClick={props.handleCategoryClick}
                                 >
                                     <h3>Learn</h3>
-                                </button>
-                            </li>
+                            </NavLink>
 
-                            <li className="md:ml-4 mx-2">
-                                <button
-                                    className="no-underline text-green-light hover:text-blue-light"
+                            <NavLink
+                                    className="nav-item"
                                     data-category="teach"
                                     onClick={props.handleCategoryClick}
                                 >
                                     <h3>Teach</h3>
-                                </button>
-                            </li>
 
-                            <li className="md:ml-4 mx-2">
-                                <button
-                                    className="no-underline text-green-light hover:text-blue-light"
+                            </NavLink>
+
+                            <NavLink
+                                    className="nav-item"
                                     data-category="rant"
                                     onClick={props.handleCategoryClick}
                                 >
                                     <h3>Rant</h3>
-                                </button>
-                            </li>
 
-                            <li className="md:ml-4 mx-2">
-                                <button
-                                    className="no-underline text-green-light hover:text-blue-light"
+                            </NavLink>
+
+                            <NavLink
+                                    className="nav-item"
                                     data-category="success"
                                     onClick={props.handleCategoryClick}
                                 >
                                     <h3>Success</h3>
-                                </button>
-                            </li>
 
-                            <li className="md:ml-4 mx-2">
-                                <button
-                                    className="no-underline text-green-light hover:text-blue-light"
+                            </NavLink>
+
+                            <NavLink
+                                    className="nav-item"
                                     data-category="tipstricks"
                                     onClick={props.handleCategoryClick}
                                 >
                                     <h3>Tips/Tricks</h3>
-                                </button>
-                            </li>
 
-                            <li className="md:ml-4 mx-2">
-                                <button
-                                    className="no-underline text-green-light hover:text-blue-light"
+                            </NavLink>
+
+                            <NavLink
+                                    className="nav-item"
                                     data-category="dadjokes"
                                     onClick={props.handleCategoryClick}
                                 >
                                     <h3>Dad Jokes</h3>
-                                </button>
-                            </li>
 
-                            <li className="md:ml-4 mx-2">
-                                <button
-                                    className="no-underline text-green-light hover:text-blue-light"
+                            </NavLink>
+
+                        <NavLink
+                                    className="nav-item"
                                     data-category="popular"
                                     onClick={props.handleCategoryClick}
                                 >
                                     <h3>Popular</h3>
-                                </button>
-                            </li>
+
+                            </NavLink>
 
 
-                        </ul>
-                    </div>
-                    <div className="w-1/5 transparent"> </div>
-                </div>
-            </header>
+                        </Nav>
+
+            </CategoryStyles>
     );
 }
 

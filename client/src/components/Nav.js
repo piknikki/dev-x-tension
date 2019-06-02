@@ -1,69 +1,101 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/styles.css";
+import {
+    Nav,
+    Collapse,
+    NavbarToggler,
+    Navbar,
+    NavbarBrand,
+    NavItem
+} from 'reactstrap';
 
-const Nav = () => {
-    return (
-        <header className="bg-blue-darker py-4 px-4 shadow-lg leading-normal">
-            <div className="container md:flex md:items-center md:justify-between mx-auto px-2">
-                <div className="container">
-                        <img id="app-logo" className="float-left clearfix mx-auto px-4" src={process.env.PUBLIC_URL + '/images/dxt.png'} alt="dxt logo" />
-                        <h1 id="logoname" className="flex mb-4 text-blue-light text-3xl text-left align-middle mx-auto py-2 ">dev X-Tension</h1>
+export default class NavComponent extends React.Component {
 
-                </div>
-                <div className="container">
-                <ul className="md:flex md:items-center px-3 list-reset text-xl">
+    constructor(props) {
+        super(props);
 
-                    <li className="md:ml-4 mx-2">
-                        <NavLink
-                            className="no-underline text-green-light hover:text-blue-light"
-                            activeClassName="active"
-                            isActive={ () => window.location.pathname === "/" }
-                            to="/"
-                            onClick={() => this.props.history.push("/")}
-                        >
-                            Home
-                        </NavLink>
-                    </li>
+        this.toggleNavbar = this.toggleNavbar.bind(this);
+        this.state = {
+            collapsed: true
+        };
+    }
 
-                    <li className="md:ml-4  mx-2">
-                        <NavLink
-                            className="no-underline text-green-light hover:text-blue-light"
-                            activeClassName="active"
-                            isActive={ () => window.location.pathname === "/new" }
-                            to="/new">
-                            New Post
-                        </NavLink>
-                    </li>
+    toggleNavbar() {
+        this.setState({
+            collapsed: !this.state.collapsed
+        });
+    }
 
-                    <li className="md:ml-4  mx-2">
-                        <NavLink
-                            className="no-underline text-green-light hover:text-blue-light"
-                            activeClassName="active"
-                            isActive={ () => window.location.pathname === "/about" }
-                            to="/about">
-                            About
-                        </NavLink>
-                    </li>
 
-                    <li className="md:ml-4  mx-2">
-                        <NavLink
-                            className="no-underline text-green-light hover:text-blue-light"
-                            activeClassName="active"
-                            isActive={ () => window.location.pathname === "/signup" }
-                            to="/signup">
-                            Sign-Up
-                        </NavLink>
-                    </li>
+    render() {
+        return (
+            <div id="my-div">
+                <Navbar dark>
+                        <NavbarBrand href={"/"} className="clearfix">
+                            <img id="app-logo" src={process.env.PUBLIC_URL + '/images/dxt.png'} alt="dxt logo"/>
+                            <h1 id="logoname">dev X-Tension</h1>
 
-                </ul>
-                </div>
+                        </NavbarBrand>
+
+                    <NavbarToggler
+                        id="toggler"
+                        className="toggler mr-2"
+
+                        onClick={this.toggleNavbar} />
+
+                   <Collapse isOpen={!this.state.collapsed} navbar>
+                       <Nav className="mr-auto" navbar>
+
+                        <NavItem>
+                            <NavLink
+                                className="nav-item"
+                                activeclassname="active"
+                                isactive={() => window.location.pathname === "/"}
+                                to="/"
+                                onClick={() => this.props.history.push("/")}
+                            >
+                                Home
+                            </NavLink>
+                        </NavItem>
+
+                        <NavItem>
+                            <NavLink
+                                className="nav-item"
+                                activeclassname="active"
+                                isactive={() => window.location.pathname === "/new"}
+                                to="/new">
+                                New Post
+                            </NavLink>
+                        </NavItem>
+
+                        <NavItem>
+                            <NavLink
+                                className="nav-item"
+                                activeclassname="active"
+                                isactive={() => window.location.pathname === "/about"}
+                                to="/about">
+                                About
+                            </NavLink>
+                        </NavItem>
+
+                        <NavItem>
+                            <NavLink
+                                className="nav-item"
+                                activeclassname="active"
+                                isactive={() => window.location.pathname === "/signup"}
+                                to="/signup">
+                                Sign-Up
+                            </NavLink>
+                        </NavItem>
+                       </Nav>
+                   </Collapse>
+                </Navbar>
             </div>
-        </header>
-    )
+        );
+    }
 }
 
-export default Nav;
 
 
 

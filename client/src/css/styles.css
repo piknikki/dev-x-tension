@@ -2,20 +2,23 @@ body {
     font-family: 'Quicksand', serif;
 }
 
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
 #logoname {
     /*font-family: 'Quicksand', serif;*/
     font-family: 'Alegreya', serif;
-
+    padding-left: 20px;
+    margin-top: 10px;
+    color: #0AE0FF;
 }
 
-.app-logo {
-
-}
-
-.yourElement {
-    animation-duration: 8s;
-    animation-delay: 0;
-    animation-iteration-count: infinite;
+#app-logo,
+#logoname {
+    float: left;
 }
 
 #post-body {
@@ -25,3 +28,29 @@ body {
     text-overflow: ellipsis;
     max-width: 100%;
 }
+
+#my-div {
+    background: #0d2e63;
+    padding: 30px;
+    align-items: center;
+}
+
+#toggler {
+    color: #0AE0FF;
+}
+
+
+.nav-item {
+    color: #0AE0FF;
+    font-family: 'Quicksand', serif;
+    list-style-type: none;
+    font-size: 1.2rem;
+}
+
+.nav-item:hover {
+    color: #22FA93;
+    list-style-type: none;
+
+}
+
+/*no-underline text-green-light hover:text-blue-light*/

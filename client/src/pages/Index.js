@@ -1,3 +1,5 @@
+import { Button } from "reactstrap";
+
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
@@ -5,7 +7,6 @@ import "../css/styles.css"
 import Header from "../components/Header";
 import axios from "axios";
 const _ = require("lodash");
-
 
 
 class Index extends Component {
@@ -116,27 +117,28 @@ class Index extends Component {
 
                 <div className="container">
                     <div className="list-reset ">
-                        <ul className="px-16 py-6 text-green-light list-reset ">
+                        <ul>
                             {this.state.filteredposts.length ? (
                                 <>
                                     {this.state.filteredposts.map(post => (
 
-                                        <li key={post._id} className="px-4 py-4 animated fadeInUp">
-                                            <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
-                                            <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
-                                            <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>
+                                        <li key={post._id} >
+                                            <h1><Link to={`/post/${post._id}`} className="post-link">{post.title}</Link></h1>
+                                            <h3 className="">written by:  {post.author}</h3>
+                                            <p className="">{post.body}</p>
 
-                                            <p className="text-grey-dark py-2">Category: {post.category}</p>
-                                            <p className="animated shake">Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
+                                            <p className="">Category: {post.category}</p>
+                                            <p className="likes">Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
 
-                                            <button
+                                            <Button
+                                                color="info"
                                                 type="button"
-                                                className="bg-transparent text-blue-light"
+                                                className="like-button"
                                                 data-action="like"
                                                 data-id={post._id}
                                                 onClick={this.handleButtonClick}>
                                                 Like
-                                            </button>
+                                            </Button>
                                         </li>
                                     ))}
                                 </>
@@ -147,17 +149,17 @@ class Index extends Component {
                                     <>
                                         {this.state.posts.map(post => (
 
-                                            <li key={post._id} className="px-4 py-4 animated fadeInUp">
-                                                <h1><Link to={`/post/${post._id}`} className="no-underline text-blue-light hover:text-green-light">{post.title}</Link></h1>
-                                                <h3 className="py2 animated fadeInLeft">written by:  {post.author}</h3>
-                                                <p className="text-black py-2 animated fadeInRightBig">{post.body}</p>
+                                            <li key={post._id} >
+                                                <h1><Link to={`/post/${post._id}`} className="">{post.title}</Link></h1>
+                                                <h3 className="">written by:  {post.author}</h3>
+                                                <p className="">{post.body}</p>
 
-                                                <p className="text-grey-dark py-2">Category: {post.category}</p>
-                                                <p className="animated shake">Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
+                                                <p className="">Category: {post.category}</p>
+                                                <p className="">Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
 
                                                 <button
                                                     type="button"
-                                                    className="bg-transparent text-blue-light"
+                                                    className=""
                                                     data-action="like"
                                                     data-id={post._id}
                                                     onClick={this.handleButtonClick}>

@@ -1,4 +1,4 @@
-body {
+body, html {
     font-family: 'Quicksand', serif;
 }
 
@@ -13,7 +13,7 @@ body {
     font-family: 'Alegreya', serif;
     padding-left: 20px;
     margin-top: 10px;
-    color: #0AE0FF;
+    color: #00cfea;
 }
 
 #app-logo,
@@ -36,12 +36,12 @@ body {
 }
 
 #toggler {
-    color: #0AE0FF;
+    color: #00cfea;
 }
 
 
 .nav-item {
-    color: #0AE0FF;
+    color: #00cfea;
     font-family: 'Quicksand', serif;
     list-style-type: none;
     font-size: 1.2rem;
@@ -54,3 +54,51 @@ body {
 }
 
 /*no-underline text-green-light hover:text-blue-light*/
+
+.container {
+    font-family: 'Quicksand', serif;
+    font-size: 14px;
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    padding-bottom: 20px;
+}
+
+.container a {
+    font-size: 28px;
+    color: #00cfea;
+}
+
+.container a:hover {
+    color: #22FA93;
+    list-style-type: none;
+    text-underline: white;
+}
+
+.container h3 {
+    font-size: 22px;
+    color: #22FA93;
+}
+
+.text-blue-light {
+    color: #00cfea;
+}
+
+.text-green-light {
+    color: #22FA93;
+}
+
+.like-button {
+    border-radius: 6px;
+
+}
+
+/*.like-button:hover {*/
+
+
+/*}*/

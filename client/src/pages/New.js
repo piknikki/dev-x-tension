@@ -45,6 +45,8 @@ class New extends Component {
                 category: this.state.category
             }
 
+            console.log(data);
+
 
             API.savePost(data)
                 .then(
@@ -67,14 +69,14 @@ class New extends Component {
 
     render() {
         return (
-            <div className="m-8 px-16 py-6">
-                <h1 className="text-blue-light">Create a new post</h1>
+            <div className="">
+                <h1 className="">Create a new post</h1>
                 <form
                     onSubmit={this.onSubmit}
                     id="new"
                 >
 
-                    <div className="custom-select py-2">
+                    <div className="custom-select">
                         <select
                             id="categoryChoice"
                             name="categoryChoice"
@@ -92,10 +94,10 @@ class New extends Component {
                     </div>
 
 
-                    <div className="m-8">
+                    <div className="">
                         <label
                             htmlFor="title"
-                            className="block text-grey-darker text-sm font-bold mb-2"
+                            className=""
                         >
                             Title
                         </label>
@@ -103,14 +105,14 @@ class New extends Component {
                             type="text"
                             name="title"
                             onChange={this.onChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
+                            className=""
                         />
                     </div>
 
-                    <div className="m-8">
+                    <div className="">
                         <label
                             htmlFor="author"
-                            className="block text-grey-darker text-sm font-bold mb-2"
+                            className=""
                         >
                             Author
                         </label>
@@ -118,30 +120,30 @@ class New extends Component {
                             type="text"
                             name="author"
                             onChange={this.onChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
+                            className=""
                         />
                     </div>
 
-                    <div className="m-8">
+                    <div className="">
                         <label
                             htmlFor="body"
-                            className="block text-grey-darker text-sm font-bold mb-2"
+                            className=""
                         >
                             Body
                         </label>
                         <textarea
                             name="body"
                             onChange={this.onChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
+                            className=""
                         />
                     </div>
 
-                    <div className="flex justify-center">
+                    <div className="">
                         <input
                             type="submit"
                             value="Save"
                             onSubmit={this.onSubmit}
-                            className="bg-blue-light h-12 text-lg hover:bg-blue-dark text-white font-bold py4 px-6 border-b-4 border-blue-dark hover:border-blue rounded"
+                            className=""
                         />
 
                     </div>

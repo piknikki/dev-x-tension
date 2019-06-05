@@ -51,7 +51,7 @@ export default class NavComponent extends React.Component {
                             <NavLink
                                 className="nav-item"
                                 activeclassname="active"
-                                isactive={() => window.location.pathname === "/"}
+                                isActive={() => window.location.pathname === "/"}
                                 to="/"
                                 onClick={() => this.props.history.push("/")}
                             >
@@ -63,7 +63,7 @@ export default class NavComponent extends React.Component {
                             <NavLink
                                 className="nav-item"
                                 activeclassname="active"
-                                isactive={() => window.location.pathname === "/new"}
+                                isActive={() => window.location.pathname === "/new"}
                                 to="/new">
                                 New Post
                             </NavLink>
@@ -73,7 +73,7 @@ export default class NavComponent extends React.Component {
                             <NavLink
                                 className="nav-item"
                                 activeclassname="active"
-                                isactive={() => window.location.pathname === "/about"}
+                                isActive={() => window.location.pathname === "/about"}
                                 to="/about">
                                 About
                             </NavLink>
@@ -83,7 +83,7 @@ export default class NavComponent extends React.Component {
                             <NavLink
                                 className="nav-item"
                                 activeclassname="active"
-                                isactive={() => window.location.pathname === "/signup"}
+                                isActive={() => window.location.pathname === "/signup"}
                                 to="/signup">
                                 Sign-Up
                             </NavLink>

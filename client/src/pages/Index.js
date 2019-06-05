@@ -157,14 +157,15 @@ class Index extends Component {
                                                 <p className="">Category: {post.category}</p>
                                                 <p className="">Number of likes: {this.showNumLikesIcon(post.numLikes)}</p>
 
-                                                <button
+                                                <Button
+                                                    color="info"
                                                     type="button"
                                                     className=""
                                                     data-action="like"
                                                     data-id={post._id}
                                                     onClick={this.handleButtonClick}>
                                                     Like
-                                                </button>
+                                                </Button>
                                             </li>
 
                                         ))

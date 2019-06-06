@@ -13,7 +13,7 @@ body, html {
     font-family: 'Alegreya', serif;
     padding-left: 20px;
     margin-top: 10px;
-    color: #00cfea;
+    color: #17a2b8;
 }
 
 #app-logo,
@@ -36,15 +36,17 @@ body, html {
 }
 
 #toggler {
-    color: #00cfea;
+    color: #17a2b8;
 }
 
 
 .nav-item {
-    color: #00cfea;
+    color: #17a2b8;
     font-family: 'Quicksand', serif;
     list-style-type: none;
     font-size: 1.2rem;
+    margin: 0 10px;
+    vertical-align: center;
 }
 
 .nav-item:hover {
@@ -53,12 +55,10 @@ body, html {
 
 }
 
-/*no-underline text-green-light hover:text-blue-light*/
 
 .container {
     font-family: 'Quicksand', serif;
     font-size: 14px;
-
 }
 
 ul {
@@ -71,7 +71,7 @@ li {
 
 .container a {
     font-size: 28px;
-    color: #00cfea;
+    color: #17a2b8;
 }
 
 .container a:hover {
@@ -86,19 +86,50 @@ li {
 }
 
 .text-blue-light {
-    color: #00cfea;
+    color: #17a2b8;
 }
 
 .text-green-light {
     color: #22FA93;
 }
 
-.like-button {
-    border-radius: 6px;
 
+.new-container {
+    padding: 20px;
 }
 
-/*.like-button:hover {*/
+.save-button,
+.like-button {
+    width: 60px;
+    height: 40px;
+    color: white;
+}
 
+.title,
+.author,
+.body {
+    margin: 5px;
+    padding: 10px;
+}
 
-/*}*/
+.create-new {
+    font-size: 28px;
+    color: #17a2b8;
+}
+
+#edit-btn {
+    padding-top: 100px;
+}
+
+.instruct {
+    padding: 20px;
+}
+
+#delete-btn {
+    color: white;
+}
+
+.edit-title,
+.edit-body {
+    margin: 20px;
+}

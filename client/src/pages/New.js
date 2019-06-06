@@ -2,7 +2,12 @@ import React, {  Component } from "react";
 import { withRouter } from "react-router-dom";
 import "../css/styles.css";
 import API from "../utils/API";
-
+import {
+    Button,
+    FormGroup,
+    Label,
+    Input
+} from 'reactstrap';
 
 class New extends Component {
     constructor(props) {
@@ -69,15 +74,15 @@ class New extends Component {
 
     render() {
         return (
-            <div className="">
-                <h1 className="">Create a new post</h1>
-                <form
+            <div className="new-container">
+                <h1 className="create-new">Create a new post</h1>
+                <FormGroup
                     onSubmit={this.onSubmit}
                     id="new"
                 >
 
-                    <div className="custom-select">
-                        <select
+                        <Input
+                            type="select"
                             id="categoryChoice"
                             name="categoryChoice"
                             onChange={this.handleInputChange}
@@ -90,18 +95,17 @@ class New extends Component {
                             <option value="success">Success</option>
                             <option value="tipstricks">Tips/Tricks</option>
                             <option value="dadjokes">Dad Jokes</option>
-                        </select>
-                    </div>
+                        </Input>
 
 
-                    <div className="">
-                        <label
+                    <div className="title">
+                        <Label
                             htmlFor="title"
                             className=""
                         >
                             Title
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                             type="text"
                             name="title"
                             onChange={this.onChange}
@@ -109,14 +113,14 @@ class New extends Component {
                         />
                     </div>
 
-                    <div className="">
-                        <label
+                    <div className="author">
+                        <Label
                             htmlFor="author"
                             className=""
                         >
                             Author
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                             type="text"
                             name="author"
                             onChange={this.onChange}
@@ -124,30 +128,32 @@ class New extends Component {
                         />
                     </div>
 
-                    <div className="">
-                        <label
+                    <div className="body">
+                        <Label
                             htmlFor="body"
                             className=""
                         >
                             Body
-                        </label>
-                        <textarea
+                        </Label>
+                        <Input
+                            type="textarea"
                             name="body"
                             onChange={this.onChange}
                             className=""
                         />
                     </div>
 
-                    <div className="">
-                        <input
+                    <div className="btn-submit">
+                        <Button
+                            color="info"
                             type="submit"
                             value="Save"
                             onSubmit={this.onSubmit}
-                            className=""
-                        />
+                            className="save-button"
+                        >Submit</Button>
 
                     </div>
-                </form>
+                </FormGroup>
             </div>
         );
     }

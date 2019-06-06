@@ -31,7 +31,7 @@ export default class NavComponent extends React.Component {
     render() {
         return (
             <div id="my-div">
-                <Navbar dark>
+                <Navbar dark expand="md">
                         <NavbarBrand href={"/"} className="clearfix">
                             <img id="app-logo" src={process.env.PUBLIC_URL + '/images/dxt.png'} alt="dxt logo"/>
                             <h1 id="logoname">dev X-Tension</h1>
@@ -40,12 +40,11 @@ export default class NavComponent extends React.Component {
 
                     <NavbarToggler
                         id="toggler"
-                        className="toggler mr-2"
-
+                        className="toggler ml-2"
                         onClick={this.toggleNavbar} />
 
-                   <Collapse isOpen={!this.state.collapsed} navbar>
-                       <Nav className="mr-auto" navbar>
+                   <Collapse isOpen={this.state.isOpen} navbar>
+                       <Nav className="ml-auto" navbar>
 
                         <NavItem>
                             <NavLink

@@ -3,6 +3,12 @@ import { withRouter } from "react-router-dom";
 import API from "../utils/API";
 // import axios from "axios";
 
+import {
+    Row,
+    Col,
+    Input, Button
+} from 'reactstrap';
+
 class Edit extends Component {
     constructor(props) {
         super(props);
@@ -67,53 +73,61 @@ class Edit extends Component {
 
     render() {
         return (
-            <div className="container m-8 flex flex-wrap px-16 py-6">
-                <h1 className="text-blue-light">Update an existing post</h1>
-                <form onSubmit={this.onSubmit} className="w-full md:w-5/6">
-                    <div className="m-8 ">
-                        <label
-                            htmlFor="title"
-                            className="block text-grey-darker text-sm font-bold mb-2"
-                        >
-                            Title
-                        </label>
-                        <input
-                            type="text"
-                            name="title"
-                            onChange={this.onChange}
-                            value={this.state.title}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
+            <>
+            <Row>
+                <h1 className="text-blue-light instruct">Update an existing post</h1>
+            </Row>
 
-
-
-                    <div className="m-8 ">
-                        <label
-                            htmlFor="body"
-                            className="block text-grey-darker text-sm font-bold mb-2 py-4"
-                        >
-                            Body
-                        </label>
-                        <textarea
-                            name="body"
-                            onChange={this.onChange}
-                            value={this.state.body}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-
-                    <div className="flex justify-center">
+            <Row>
+                <Col>
+                    <form onSubmit={this.onSubmit} className="">
+                        <div className="">
+                            <label
+                                htmlFor="title"
+                                className="edit-title"
+                            >
+                                Title
+                            </label>
                             <input
-                                type="submit"
-                                value="Save"
-                                onSubmit={this.onSubmit}
-                                className="bg-blue-light h-12 text-lg hover:bg-blue-dark text-white font-bold py4 px-6 border-b-4 border-blue-dark hover:border-blue rounded"
+                                type="text"
+                                name="title"
+                                onChange={this.onChange}
+                                value={this.state.title}
+                                className="edit-title-box"
                             />
+                        </div>
 
-                    </div>
-                </form>
-            </div>
+
+
+                        <div className="">
+                            <label
+                                htmlFor="body"
+                                className="edit-body"
+                            >
+                                Body
+                            </label>
+                            <textarea
+                                name="body"
+                                onChange={this.onChange}
+                                value={this.state.body}
+                                className="edit-body-box"
+                            />
+                        </div>
+
+
+                                <Button
+                                    color="info"
+                                    type="button"
+                                    value="Save"
+                                    onClick={this.onSubmit}
+                                    className="save-button"
+                                >Save</Button>
+
+
+                    </form>
+                </Col>
+            </Row>
+                </>
         );
     }
     // end of class

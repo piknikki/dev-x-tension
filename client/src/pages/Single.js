@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { withRouter, NavLink } from "react-router-dom";
 // import axios from "axios";
 import API from "../utils/API";
+import {
+    Row,
+    Col,
+    Button
+} from 'reactstrap';
 
 // this component is to get ONE post by the id
 class Single extends Component {
@@ -41,34 +46,38 @@ class Single extends Component {
 
     render() {
         return (
-            <div className="container m-8 flex flex-wrap px-16 py-6">
-                <div className="w-full md:w-3/4">
-                    <h1 className="text-blue-light py-2 animated bounceInRight">{this.state.post.title}</h1>
-                    <h3 className="text-green-light py-2 animated bounceInLeft">{this.state.post.author}</h3>
-                    <p className="text-black py-2 leading-loose animated bounceInUp">{this.state.post.body}</p>
-                </div>
+            <>
+                <Row>
 
-                <div className="w-full md:w-1/4">
-                    <button className="bg-blue-light align-middle no-underline h-12 text-lg hover:bg-blue-dark text-white font-bold mx-4 py6 px-6 border-b-4 border-blue-dark hover:border-blue rounded">
+                    <h3 className="instruct">Click on the title to edit or the red button to delete</h3>
+                </Row>
+                <Row>
+
+                    <Col>
                         <NavLink
                             to={`/edit/${this.state.post._id}`}
-                            className="align-middle no-underline text-white font-bold "
+                            id="edit-btn"
+                            color="link"
                         >
-                            Edit
+                            <h1 className="text-blue-light">{this.state.post.title}</h1>
+
                         </NavLink>
-                    </button>
-                        <button
-                            onClick={event => this.onDelete(event)}
-                            className="bg-green-light h-12 text-lg hover:bg-green-dark text-white font-bold mx-4 py4 px-4 border-b-4 border-green-dark hover:border-green rounded"
-                        >
-                            Delete
-                        </button>
+                            <h3 className="text-green-light">written by:  {this.state.post.author}</h3>
+                            <p className="">{this.state.post.body}</p>
 
 
-                </div>
+                            <Button
+                                id="delete-btn"
+                                color="danger"
+                                onClick={event => this.onDelete(event)}
+                                className=""
+                            >
+                                Delete
+                            </Button>
+                    </Col>
 
-            </div>
-
+                </Row>
+            </>
         )
     }
 

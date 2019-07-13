@@ -5,11 +5,12 @@ This app is a blogging app for students of full stack bootcamps.  It's a place t
 
 # Technologies Used
 * HTML/CSS
-* TailwindCSS
+* Reactstrap
 * Javascript
 * Node.js
 * Express
 * Mongo/Mongoose
+* React
 * Heroku
 * Mailchimp API
 
